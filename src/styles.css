@@ -1,11 +1,11 @@
 .list-group-item{
-  display: inline;
+  display: inline-block;
   border: none;
   background-color: #cbac88;
 }
 
 .list-group-horizontal{
-  border: none
+  border: none;
 }
 
 ul{
@@ -24,6 +24,9 @@ a{
   max-height: 50px;
 }
 
+figure{
+  text-align: center;
+}
 
 body{
   background-color: #e9dccd;
@@ -54,4 +57,10 @@ nav{
 #logo{
   max-width: 100px;
   max-height: 100px;
+}
+
+.btn{
+  background-color: #A37848;
+  border: 1px solid black;
+  color: white;
 }
