@@ -8,6 +8,9 @@ export default function Home() {
   return (
     <>
     <Products trnro="1"/>
+    <Products trnro="2"/>
+    <Products trnro="3"/>
+    <Products trnro="4"/>
    
      {/*  <div id="listing" className="row border-top border-start border-end border-dark">
         <h1>Kahvit:</h1>

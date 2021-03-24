@@ -6,7 +6,8 @@ export default function Products({trnro}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
-    
+    const categoryName = ["", "Kahvit", "Muut juomat", "Teet", "Leivokset"];
+
     useEffect(() => {
       let status = 0;
       fetch(URL + 'categories.php?trnro=' + trnro)
@@ -30,7 +31,7 @@ export default function Products({trnro}) {
     return (
         <>
         <div id="listing" className="row border-bottom border-start border-end border-dark pb-2">
-            <h2>Kaikki tuotteet:</h2>
+            <h2>{categoryName[trnro]}</h2>
             <div className="col-12  p-0 m-0">
             <ul className="list-group-horizontal list-group-flush" id="items">
                 {products.map(item => (
