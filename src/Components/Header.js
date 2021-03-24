@@ -1,6 +1,8 @@
 import React from 'react'
 
 export default function Header() {
+
+
     return (
         <>
             <header className="row">
@@ -8,7 +10,15 @@ export default function Header() {
                     <img id="logo" className="img-fluid" src="/img/kahvilalogo.png" alt="" />
                 </div>
                 <div className="col-6 text-end border-end border-top border-dark pt-3 ">
-                    <img id="cart" className="img-fluid" src="/img/cart3.png" alt="" />
+                    <img id="cart" type="button" className="img-fluid" src="/img/cart3.png" alt="" data-bs-target="#cartItems" data-bs-toggle="dropdown"/>
+                     <div className="dropdown-menu" id="cartItems">
+                         <ul>
+                         <li>test</li>
+                         </ul>
+                         <form>
+                             <button>Testings</button>
+                         </form>
+                    </div>   
                 </div>
                 <nav className=" m-0 navbar navbar-expand-lg border-bottom border-top border-start border-end border-dark ">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
