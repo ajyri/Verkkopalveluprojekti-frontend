@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react';
 
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Products() {
+export default function Products({trnro}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
       let status = 0;
-      fetch(URL + 'index.php')
+      fetch(URL + 'categories.php?trnro=' + trnro)
       .then(res => {
         status = parseInt(res.status);
         return res.json()
