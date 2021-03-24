@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Items({trnro}) {
+export default function Products({trnro}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
