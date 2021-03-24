@@ -2,14 +2,14 @@ import React, {useState, useEffect} from 'react';
 
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Items({trnro}) {
+export default function Products({trnro}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
     
     useEffect(() => {
       let status = 0;
-      fetch(URL + 'index.php')
+      fetch(URL + 'categories.php?trnro=' + trnro)
       .then(res => {
         status = parseInt(res.status);
         return res.json()
@@ -38,6 +38,7 @@ export default function Items({trnro}) {
                 <li className="list-group-item img-fluid">
                 <figure>
                     <img src="/img/kahvi_place.jpg" alt="" />
+                    <p>{item.tuotenimi}</p>
                     <p>{item.kuvaus}</p>
                     <p>Hinta: {item.hinta} €</p>
                     <button className="btn">Lisää koriin</button>

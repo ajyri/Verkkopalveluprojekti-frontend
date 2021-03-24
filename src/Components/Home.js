@@ -7,7 +7,7 @@ export default function Home() {
 
   return (
     <>
-    <Products/>
+    <Products trnro="1"/>
    
      {/*  <div id="listing" className="row border-top border-start border-end border-dark">
         <h1>Kahvit:</h1>
