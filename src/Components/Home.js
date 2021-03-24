@@ -1,10 +1,15 @@
 import React from 'react'
+import Products from './Products.js';
+
 
 export default function Home() {
-    
+   
+
   return (
     <>
-      <div id="listing" className="row border-top border-start border-end border-dark">
+    <Products/>
+   
+     {/*  <div id="listing" className="row border-top border-start border-end border-dark">
         <h1>Kahvit:</h1>
       </div>
       <div id="listing" className="row border-bottom border-start border-end border-dark pb-2">
@@ -117,7 +122,7 @@ export default function Home() {
 
         </div>
       </div>
-
+ */}
     </>
   )
 }
