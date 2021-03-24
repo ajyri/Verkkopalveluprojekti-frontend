@@ -30,6 +30,7 @@ export default function Items({trnro}) {
     return (
         <>
         <div id="listing" className="row border-bottom border-start border-end border-dark pb-2">
+            <h2>Kaikki tuotteet:</h2>
             <div className="col-12  p-0 m-0">
             <ul className="list-group-horizontal list-group-flush" id="items">
                 {products.map(item => (
@@ -37,10 +38,11 @@ export default function Items({trnro}) {
                 <li className="list-group-item img-fluid">
                 <figure>
                     <img src="/img/kahvi_place.jpg" alt="" />
-                    <figcaption>{item.hinta}</figcaption>
+                    <p>{item.kuvaus}</p>
+                    <p>Hinta: {item.hinta} €</p>
                     <button className="btn">Lisää koriin</button>
                 </figure>
-                <p>{item.kuvaus}</p>
+                
                 </li>
                 ))}
             </ul>
