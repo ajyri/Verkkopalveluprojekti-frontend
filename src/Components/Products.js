@@ -6,7 +6,7 @@ export default function Products({trnro}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState([])
+    const [category, setCategory] = useState([]);
 
     
     
