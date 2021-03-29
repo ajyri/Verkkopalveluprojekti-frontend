@@ -1,8 +1,7 @@
 import React, {useState} from 'react'
 import Cart from './Cart.js'
 
-export default function Header() {
-    const [cart, setCart] = useState([]);
+export default function Header({cart}) {
 
     return (
         <>
@@ -12,15 +11,10 @@ export default function Header() {
                 </div>
                 <div className="col-6 text-end border-end border-top border-dark pt-3 ">
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
-                        <Cart cart={cart} />
+                        <Cart count={cart}/>
                     </a>
                     <div className="dropdown-menu" id="cartItems">
-                         <ul>
-                         <li>test</li>
-                         </ul>
-                         <form>
-                             <button>Testings</button>
-                         </form>
+                        {cart}
                     </div>   
                 </div>
                 <nav className=" m-0 navbar navbar-expand-lg border-bottom border-top border-start border-end border-dark ">

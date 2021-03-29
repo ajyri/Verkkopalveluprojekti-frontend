@@ -1,13 +1,14 @@
 import React, {useState, useEffect} from 'react';
+import Cart from './Cart.js'
 
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Products({trnro}) {
+export default function Products({trnro, addToCart}) {
     // luodaan muuttujat kaikille tuotteille
     
     const [products, setProducts] = useState([]);
     const [category, setCategory] = useState([]);
-
+    const [cart, setCart] = useState(0);
     
     
     useEffect(() => {
@@ -51,6 +52,8 @@ export default function Products({trnro}) {
         }
       )
     }, [])
+
+
     return (
         <>
         <div id="listing" className="row border-bottom border-start border-end border-dark pb-2">
@@ -67,11 +70,13 @@ export default function Products({trnro}) {
                     <p>{item.tuotenimi}</p>
                     <p>{item.kuvaus}</p>
                     <p>Hinta: {item.hinta} €</p>
-                    <button className="btn">Lisää koriin</button>
+                    <button className="btn" onClick={() => addToCart(item)}>Lisää koriin</button>
                 </figure>
                 
                 </li>
+                
                 ))}
+                
             </ul>
             </div>
         </div>
