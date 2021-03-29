@@ -33,12 +33,9 @@ export default function Header() {
                                 <a className="nav-link active" aria-current="page" href="#">Etusivu</a>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link" href="#" >Kaikki tuotteet</a>
-                            </li>
-                            <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
-                  </a>
+                                </a>
                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a className="dropdown-item" href="#">Action</a></li>
                                     <li><a className="dropdown-item" href="#">Another action</a></li>
