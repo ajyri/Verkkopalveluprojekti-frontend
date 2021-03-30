@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import Cart from './Cart.js'
+import Dropdown from './Dropdown.js';
 
 export default function Header() {
     const [cart, setCart] = useState([]);
@@ -36,12 +37,7 @@ export default function Header() {
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
                                 </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                                <Dropdown/>
                             </li>
                         </ul>
                         <form className="d-flex">
