@@ -3,6 +3,8 @@ import './styles.css';
 import Header from './Components/Header.js'
 import Home from './Components/Home.js'
 import Footer from './Components/Footer.js'
+import { Switch, Route} from 'react-router-dom';
+import Testisivu from './Components/Testisivu.js';
 
 function App() {
 
@@ -17,7 +19,13 @@ function App() {
   return (
     <div className="container">
     <Header cart={cart}/>
-    <Home addToCart={addToCart}/>
+    <Switch>
+      <Route path="/" render={() => <Home
+      addToCart={addToCart}/>}
+      exact
+      />
+      <Route path="/testi" component={Testisivu} />
+    </Switch>
     <Footer/>
     </div>
   );
