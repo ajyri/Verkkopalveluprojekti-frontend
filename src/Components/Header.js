@@ -1,6 +1,8 @@
 import React, {useState} from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
+import { Link } from 'react-router-dom';
+import Testisivu from './Testisivu.js';
 
 export default function Header({cart}) {
 
@@ -15,7 +17,13 @@ export default function Header({cart}) {
                         <Cart count={cart}/>
                     </a>
                     <div className="dropdown-menu" id="cartItems">
-                        {cart}
+                        <ul>
+                        {cart.map(item =>(
+                            <li>
+                                {item.tuotenimi} {item.qty} 
+                            </li>
+                        ))}
+                        </ul>
                     </div>   
                 </div>
                 <nav className=" col-md-3 order-md-1 col-sm-3 m-0 navbar navbar-expand-lg border-bottom border-top border-start border-end border-dark">
@@ -25,7 +33,7 @@ export default function Header({cart}) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Etusivu</a>
+                                <Link className="nav-link active" aria-current="page" to={{pathname:'/'}} >Etusivu</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">

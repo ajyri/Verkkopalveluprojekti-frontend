@@ -1,4 +1,6 @@
 import React, {useState, useEffect} from 'react';
+import { Link } from 'react-router-dom';
+
 
 const URL = 'http://localhost/verkkopalvelu/';
 
@@ -29,7 +31,7 @@ useEffect(() => {
         <>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {category.map(category => (
-                    <li><a className="dropdown-item" href="#">{category.trnimi}</a></li>
+                    <li key={category.id}><Link className="dropdown-item" to={{pathname:'/testi', state: {id: category.id, name: category.name}}}>{category.trnimi}</Link></li>
                 ))}
             </ul>    
         </>
