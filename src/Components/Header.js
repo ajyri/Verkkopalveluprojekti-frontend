@@ -17,7 +17,13 @@ export default function Header({cart}) {
                         <Cart count={cart}/>
                     </a>
                     <div className="dropdown-menu" id="cartItems">
-                        {cart}
+                        <ul>
+                        {cart.map(item =>(
+                            <li>
+                                {item.tuotenimi} {item.qty} 
+                            </li>
+                        ))}
+                        </ul>
                     </div>   
                 </div>
                 <nav className=" m-0 navbar navbar-expand-lg border-bottom border-top border-start border-end border-dark ">
