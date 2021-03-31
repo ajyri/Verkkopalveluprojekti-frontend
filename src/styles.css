@@ -69,3 +69,10 @@ nav{
   border: 1px solid black;
   color: white;
 }
+.card {
+  background-color: #cbac88;
+  border: 1px solid black;
+}
+.hinta {
+  font-size: large !important;
+}

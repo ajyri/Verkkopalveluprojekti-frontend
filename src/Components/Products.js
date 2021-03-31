@@ -1,85 +1,85 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react'
 import Cart from './Cart.js'
 
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Products({trnro, addToCart}) {
-    // luodaan muuttujat kaikille tuotteille
-    
-    const [products, setProducts] = useState([]);
-    const [category, setCategory] = useState([]);
-    const [cart, setCart] = useState(0);
-    
-    
-    useEffect(() => {
-      let status = 0;
-      fetch(URL + 'categories.php?trnimi=' + trnro)
+export default function Products ({ trnro, addToCart }) {
+  // luodaan muuttujat kaikille tuotteille
+
+  const [products, setProducts] = useState([])
+  const [category, setCategory] = useState([])
+  const [cart, setCart] = useState(0)
+
+  useEffect(() => {
+    let status = 0
+    fetch(URL + 'categories.php?trnimi=' + trnro)
       .then(res => {
-        status = parseInt(res.status);
+        status = parseInt(res.status)
         return res.json()
       })
       .then(
-        (res) => {
-        	if (status === 200) {
-            setCategory(res);
-            
-        	} else {
-          alert(res.error);
-        	}
-        }, (error) => {
-          alert(error);
+        res => {
+          if (status === 200) {
+            setCategory(res)
+          } else {
+            alert(res.error)
+          }
+        },
+        error => {
+          alert(error)
         }
       )
-    }, [])
-    
-    useEffect(() => {
-      let status = 0;
-      fetch(URL + 'categories.php?trnro=' + trnro)
+  }, [])
+
+  useEffect(() => {
+    let status = 0
+    fetch(URL + 'categories.php?trnro=' + trnro)
       .then(res => {
-        status = parseInt(res.status);
+        status = parseInt(res.status)
         return res.json()
       })
       .then(
-        (res) => {
-        	if (status === 200) {
-            setProducts(res);
-            
-        	} else {
-          alert(res.error);
-        	}
-        }, (error) => {
-          alert(error);
+        res => {
+          if (status === 200) {
+            setProducts(res)
+          } else {
+            alert(res.error)
+          }
+        },
+        error => {
+          alert(error)
         }
       )
-    }, [])
+  }, [])
 
+  return (
+    <>
+      <div
+        id='listing'
+        className='row border-bottom border-start border-end border-dark pb-2'
+      >
+        <h2>{category.map(category => category.trnimi)}</h2>
 
-    return (
-        <>
-        <div id="listing" className="row border-bottom border-start border-end border-dark pb-2">
-            <h2>{category.map(category =>(
-              category.trnimi
-            ))}</h2>
-            <div className="col-12  p-0 m-0">
-            <ul className="list-group-horizontal list-group-flush" id="items">
-                {products.map(item => (
-                // Render item here..
-                <li key={item.tuotenro} className="list-group-item img-fluid">
-                <figure>
-                    <img src="/img/kahvi_place.jpg" alt="" />
-                    <p>{item.tuotenimi}</p>
-                    <p>{item.kuvaus}</p>
-                    <p>Hinta: {item.hinta} €</p>
-                    <button className="btn" onClick={() => addToCart(item)}>Lisää koriin</button>
-                </figure>
-                
-                </li>
-                
-                ))}
-                
-            </ul>
+        {products.map(item => (
+          // Render item here..
+          <div className='card-group col-lg-3 col-md-4 col-sm-6'>
+            <div key={item.tuotenro} className='card'>
+              <img src='/img/kahvi_place.jpg' className='card-img-top' alt='' />
+              <div className='card-body d-flex flex-column'>
+                <div className='card-title row'>
+                <h5 className="col-8">{item.tuotenimi} </h5> <h5 className="col-4 card-text-right"> {item.hinta} €</h5>
+                </div>
+                <p className='card-text'>{item.kuvaus}</p>
+               
+                  <button className='btn mt-auto' onClick={() => addToCart(item)}>
+                    Lisää koriin
+                  </button>
+       
+              </div>
             </div>
-        </div>
-        </>
-    ) 
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }
