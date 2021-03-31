@@ -7,11 +7,26 @@ import Footer from './Components/Footer.js'
 function App() {
 
   const [cart, setCart] = useState([]);
-  
+  const [qty, setQty] = useState([]);
+
   function addToCart(item){
-    const newCart = [...cart,item.tuotenimi]
-    setCart(newCart)
-    console.log(cart)
+    //See if item already exists in array, if not add it.
+    const exist = cart.find(exist => exist === item)
+    if(exist){
+      console.log(item.qty)
+      item.qty = item.qty + 1
+      const newQty = [...qty, item.qty]
+      setQty(newQty)
+      console.log(qty)
+    }else{
+      const newCart = [...cart, item]
+      item.qty = 1
+      const newQty = [...qty, item.qty]
+      setCart(newCart)
+      setQty(newQty)
+      console.log(cart)
+      console.log(qty)
+    }
   }
   
   return (
