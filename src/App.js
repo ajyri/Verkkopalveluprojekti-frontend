@@ -1,9 +1,9 @@
-import {React, useState} from 'react'
+import {React, useEffect, useState} from 'react'
 import './styles.css';
 import Header from './Components/Header.js'
 import Home from './Components/Home.js'
 import Footer from './Components/Footer.js'
-import { Switch, Route} from 'react-router-dom';
+import { Switch, Route, useLocation} from 'react-router-dom';
 import Testisivu from './Components/Testisivu.js';
 
 function App() {
@@ -11,7 +11,18 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
 
-  const trnro = 1; // Tämä variable luotu vain testausta varten
+  const [trnro, setTrnro] = useState(1); // Tämä variable luotu vain testausta varten
+
+  /* let location = useLocation();
+
+  useEffect(() => {
+    if (location.state!==undefined) {
+      setTrnro({trnro: location.state.trnro})
+    }
+  }, [location.state]) */
+
+    
+  console.log(trnro);
 
   function addToCart(item){
     //See if item already exists in array, if not add it.
