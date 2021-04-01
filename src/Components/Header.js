@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
-import Testisivu from './Testisivu.js';
+
 
 export default function Header({cart}) {
 

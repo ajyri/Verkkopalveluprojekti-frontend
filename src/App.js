@@ -4,25 +4,21 @@ import Header from './Components/Header.js'
 import Home from './Components/Home.js'
 import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation} from 'react-router-dom';
-import Testisivu from './Components/Testisivu.js';
+import Categories from './Components/Categories.js';
 
 function App() {
 
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
+  const [trnro, setTrnro] = useState(null);
 
-  const [trnro, setTrnro] = useState(1); // Tämä variable luotu vain testausta varten
-
-  /* let location = useLocation();
+  let location = useLocation();
 
   useEffect(() => {
     if (location.state!==undefined) {
-      setTrnro({trnro: location.state.trnro})
+      setTrnro(location.state.trnro)
     }
-  }, [location.state]) */
-
-    
-  console.log(trnro);
+  }, [location.state])
 
   function addToCart(item){
     //See if item already exists in array, if not add it.
@@ -52,7 +48,7 @@ function App() {
       addToCart={addToCart}/>}
       exact
       />
-      <Route path="/testi" render={() => <Testisivu
+      <Route path="/categories" render={() => <Categories
       addToCart={addToCart}
       trnro={trnro}
       />}

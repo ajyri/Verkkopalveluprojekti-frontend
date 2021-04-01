@@ -37,7 +37,7 @@ useEffect(() => {
                         <Link
                             className="dropdown-item" 
                             to={{
-                                pathname:'/testi',
+                                pathname:'/categories',
                                 state: {
                                     trnro: category.trnro
                                     }

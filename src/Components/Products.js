@@ -29,7 +29,7 @@ export default function Products ({ trnro, addToCart }) {
           alert(error)
         }
       )
-  }, [])
+  }, [trnro])
 
   useEffect(() => {
     let status = 0
@@ -50,7 +50,7 @@ export default function Products ({ trnro, addToCart }) {
           alert(error)
         }
       )
-  }, [])
+  }, [trnro])
 
   return (
     <>
