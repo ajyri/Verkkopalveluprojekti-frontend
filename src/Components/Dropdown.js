@@ -31,7 +31,7 @@ useEffect(() => {
         <>
             <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 {category.map(category => (
-                    <li key={category.id}><Link className="dropdown-item" to={{pathname:'/testi', state: {id: category.id, name: category.name}}}>{category.trnimi}</Link></li>
+                    <li key={category.trnro}><Link trnro={category.trnro} className="dropdown-item" to={{pathname:'/testi', state: {trnro: category.trnro, trnimi: category.trnimi}}}>{category.trnimi}</Link></li>
                 ))}
             </ul>    
         </>
