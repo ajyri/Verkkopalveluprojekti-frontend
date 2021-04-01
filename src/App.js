@@ -11,6 +11,8 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
 
+  const trnro = 1; // Tämä variable luotu vain testausta varten
+
   function addToCart(item){
     //See if item already exists in array, if not add it.
     const exist = cart.find(exist => exist === item)
@@ -39,7 +41,11 @@ function App() {
       addToCart={addToCart}/>}
       exact
       />
-      <Route path="/testi" component={Testisivu} />
+      <Route path="/testi" render={() => <Testisivu
+      addToCart={addToCart}
+      trnro={trnro}
+      />}
+      />
     </Switch>
     <Footer/>
     </div>

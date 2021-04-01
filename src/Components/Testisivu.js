@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import Products from './Products.js';
 
-export default function Testisivu() {
+export default function Testisivu({trnro, addToCart}) {
     return (
-        <div>
-           <p>Näkyykö?</p> 
-        </div>
+        <>
+           <Products trnro={trnro} addToCart={addToCart}/> 
+        </>
     )
 }
