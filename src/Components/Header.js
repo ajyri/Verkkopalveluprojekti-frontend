@@ -1,11 +1,11 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 
 
-export default function Header({cart, addToCart, removeFromCart}) {
-
+export default function Header({ cart, addToCart, removeFromCart }) {
+    let total = 0
     return (
         <>
             <header className="row">
@@ -19,32 +19,42 @@ export default function Header({cart, addToCart, removeFromCart}) {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={{pathname:'/'}} >Etusivu</Link>
+                                <Link className="nav-link active" aria-current="page" to={{ pathname: '/' }} >Etusivu</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
                                 </a>
-                                <Dropdown/>
+                                <Dropdown />
                             </li>
                         </ul>
                     </div>
                 </nav>
                 <div className="col-md-6 order-md-2 col-sm-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
-                        <Cart count={cart}/>
+                        <Cart count={cart} />
                     </a>
                     <div className="dropdown-menu" id="cartItems">
                         <ul className="text-center">
-                        {cart.map(item =>(
-                            <li>
-                                {item.tuotenimi} 
-                                <div>
-                              <span onClick={() => removeFromCart(item)}>-</span> {item.qty} <span onClick={() => addToCart(item)}>+</span>
-                                </div>
-                            </li>
-                        ))}
+                            {cart.map(item => (
+                                <li className="border-bottom border-dark">
+                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
+                                    <div>
+                                        < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>
+                                    </div>
+                                </li>
+                            ))}
                         </ul>
+                        <div className="text-center pt-1">
+                            <p>Summa: {cart.forEach(item => {
+                                total = total + (item.hinta * item.qty) 
+                            })}
+                            {total.toFixed(1)}€</p>
+               
+                        </div>
+                        <div className="text-center">
+                            <button className="btn btn-primary">Kassalle</button>
+                        </div>
                     </div>
                 </div>
             </header>
