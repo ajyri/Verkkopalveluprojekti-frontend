@@ -4,7 +4,7 @@ import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 
 
-export default function Header({cart}) {
+export default function Header({cart, addToCart, removeFromCart}) {
 
     return (
         <>
@@ -30,19 +30,22 @@ export default function Header({cart}) {
                         </ul>
                     </div>
                 </nav>
-                <div className="col-md-6 order-md-2 col-sm-6 col-6 align-self-md-end text-end pt-2 mb-1">
+                <div className="col-md-6 order-md-2 col-sm-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart}/>
                     </a>
                     <div className="dropdown-menu" id="cartItems">
-                        <ul>
+                        <ul className="text-center">
                         {cart.map(item =>(
                             <li>
-                                {item.tuotenimi} {item.qty} 
+                                {item.tuotenimi} 
+                                <div>
+                              <span onClick={() => removeFromCart(item)}>-</span> {item.qty} <span onClick={() => addToCart(item)}>+</span>
+                                </div>
                             </li>
                         ))}
                         </ul>
-                    </div>   
+                    </div>
                 </div>
             </header>
         </>

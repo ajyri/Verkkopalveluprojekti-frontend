@@ -39,10 +39,24 @@ function App() {
       console.log(qty)
     }
   }
+
+  function removeFromCart(item){
+    if(item.qty == 1){
+      let index = cart.indexOf(item)
+      const newCart = [...cart]
+      newCart.splice(index,1)
+      setCart(newCart)
+    }
+    console.log(item.qty)
+    item.qty = item.qty -1
+    const newQty = [...qty, item.qty]
+    setQty(newQty)
+    console.log(qty)
+  }
   
   return (
     <div className="container">
-    <Header cart={cart}/>
+    <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>
     <Switch>
       <Route path="/" render={() => <Home
       addToCart={addToCart}/>}
