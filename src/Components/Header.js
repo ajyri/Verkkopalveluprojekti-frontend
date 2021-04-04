@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 
 
 export default function Header({ cart, addToCart, removeFromCart }) {
-    let total = 0
+let total = 0
+    
     return (
         <>
             <header className="row">
@@ -46,11 +47,10 @@ export default function Header({ cart, addToCart, removeFromCart }) {
                             ))}
                         </ul>
                         <div className="text-center pt-1">
-                            <p>Summa: {cart.forEach(item => {
+                        <p>Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
                             {total.toFixed(1)}€</p>
-               
                         </div>
                         <div className="text-center">
                             <button className="btn btn-primary">Kassalle</button>
