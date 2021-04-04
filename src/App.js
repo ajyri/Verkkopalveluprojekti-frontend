@@ -20,9 +20,7 @@ function App() {
     }
   }, [location.state])
 
-  function getTotal(){    
-      return <p>{total.toFixed(1)}</p>
-    }
+
 
   
 
@@ -34,14 +32,12 @@ function App() {
       const newQty = [...qty, item.qty]
       setQty(newQty)
       console.log(total)
-      setTotal(total + (item.hinta * item.qty))
     }else{
       const newCart = [...cart, item]
       item.qty = 1
       const newQty = [...qty, item.qty]
       setCart(newCart)
       setQty(newQty)
-      setTotal(total + (item.hinta))
       console.log(total)
     }
   }
@@ -62,7 +58,7 @@ function App() {
   
   return (
     <div className="container">
-    <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} getTotal={getTotal}/>
+    <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart}/>
     <Switch>
       <Route path="/" render={() => <Home
       addToCart={addToCart}/>}
