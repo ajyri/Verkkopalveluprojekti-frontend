@@ -10,10 +10,10 @@ let total = 0
     return (
         <>
             <header className="row">
-                <div className="col-md-3 col-sm-7 text-start pt-2 mb-1">
+                <div className="col-lg-3 col-md-7 text-start pt-2 mb-1">
                     <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
-                <nav className=" col-md-3 order-md-1 col-sm-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
+                <nav className=" col-lg-3 col-md-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -31,7 +31,7 @@ let total = 0
                         </ul>
                     </div>
                 </nav>
-                <div className="col-md-6 order-md-2 col-sm-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
+                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
                     </a>
