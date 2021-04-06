@@ -14,6 +14,23 @@ ul{
   margin: 0px;
 }
 
+.social {
+  height: 45px;
+  width: 45px;
+  margin-top: 15px;
+  display: inline-block;
+}
+
+.footer_info {
+  margin-left: 40px;
+  color: #cbac88;
+}
+
+.subscribe {
+  color: #cbac88;
+  margin-left: 400px;
+}
+
 a{
   color: white;
   text-decoration: none;
