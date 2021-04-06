@@ -38,7 +38,7 @@ let total = 0
                     <div className="dropdown-menu" id="cartItems">
                         <ul className="text-center">
                             {cart.map(item => (
-                                <li className="border-bottom border-dark">
+                                <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
                                     <div>
                                         < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>

@@ -11,7 +11,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
-  const [total, setTotal] = useState(0)
   let location = useLocation();
 
   useEffect(() => {
@@ -21,24 +20,21 @@ function App() {
   }, [location.state])
 
 
-
-  
-
   function addToCart(item){
     //See if item already exists in array, if not add it.
-    const exist = cart.find(exist => exist === item)
+    const exist = cart.find(exist => exist.tuotenimi === item.tuotenimi)
     if(exist){
-      item.qty = item.qty + 1
+      exist.qty = exist.qty + 1
       const newQty = [...qty, item.qty]
       setQty(newQty)
-      console.log(total)
+      console.log(cart)
+
     }else{
       const newCart = [...cart, item]
       item.qty = 1
       const newQty = [...qty, item.qty]
       setCart(newCart)
       setQty(newQty)
-      console.log(total)
     }
   }
 
