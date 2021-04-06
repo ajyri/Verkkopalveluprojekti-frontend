@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Cart from './Cart.js'
+
 
 const URL = 'http://localhost/verkkopalvelu/'
 
@@ -8,7 +8,7 @@ export default function Products ({ trnro, addToCart }) {
 
   const [products, setProducts] = useState([])
   const [category, setCategory] = useState([])
-  const [cart, setCart] = useState(0)
+  
 
   useEffect(() => {
     let status = 0
