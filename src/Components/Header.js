@@ -1,58 +1,62 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import Cart from './Cart.js'
+import Dropdown from './Dropdown.js';
+import { Link } from 'react-router-dom';
 
-export default function Header() {
-    const [cart, setCart] = useState([]);
 
+export default function Header({ cart, addToCart, removeFromCart }) {
+let total = 0
+    
     return (
         <>
             <header className="row">
-                <div className="col-6 text-start border-start border-top border-dark pt-2 mb-1">
+                <div className="col-md-3 col-sm-7 text-start pt-2 mb-1">
                     <img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" />
                 </div>
-                <div className="col-6 text-end border-end border-top border-dark pt-3 ">
-                    <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
-                        <Cart cart={cart} />
-                    </a>
-                    <div className="dropdown-menu" id="cartItems">
-                         <ul>
-                         <li>test</li>
-                         </ul>
-                         <form>
-                             <button>Testings</button>
-                         </form>
-                    </div>   
-                </div>
-                <nav className=" m-0 navbar navbar-expand-lg border-bottom border-top border-start border-end border-dark ">
+                <nav className=" col-md-3 order-md-1 col-sm-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="#">Etusivu</a>
-                            </li>
-                            <li className="nav-item dropdown">
-                                <a className="nav-link" href="#" >Kaikki tuotteet</a>
+                                <Link className="nav-link active" aria-current="page" to={{ pathname: '/' }} >Etusivu</Link>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
-                  </a>
-                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                                </a>
+                                <Dropdown />
                             </li>
                         </ul>
-                        <form className="d-flex">
-                            <input className="form-control me-2" type="search" placeholder="Etsi tuotteita" aria-label="Search" />
-                            <button className="btn btn-outline-light" type="submit">Etsi</button>
-                        </form>
                     </div>
                 </nav>
+                <div className="col-md-6 order-md-2 col-sm-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
+                    <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
+                        <Cart count={cart} />
+                    </a>
+                    <div className="dropdown-menu" id="cartItems">
+                        <ul className="text-center">
+                            {cart.map(item => (
+                                <li className="border-bottom border-dark">
+                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
+                                    <div>
+                                        < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>
+                                    </div>
+                                </li>
+                            ))}
+                        </ul>
+                        <div className="text-center pt-1">
+                        <p>Summa: {cart.forEach(item => {
+                                total = total + (item.hinta * item.qty) 
+                            })}
+                            {total.toFixed(1)}€</p>
+                        </div>
+                        <div className="text-center">
+                            <button className="btn btn-primary">Kassalle</button>
+                        </div>
+                    </div>
+                </div>
             </header>
         </>
     )

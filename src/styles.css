@@ -77,12 +77,16 @@ nav{
 }
 
 #logo{
-  max-width: 100px;
-  max-height: 100px;
+  max-width: 100%;
+  height: auto;
 }
 
 .btn{
   background-color: #A37848;
   border: 1px solid black;
   color: white;
+}
+.card {
+  background-color: #cbac88;
+  border: 1px solid black;
 }
