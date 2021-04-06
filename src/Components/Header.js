@@ -11,7 +11,7 @@ let total = 0
         <>
             <header className="row">
                 <div className="col-md-3 col-sm-7 text-start pt-2 mb-1">
-                    <img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" />
+                    <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
                 <nav className=" col-md-3 order-md-1 col-sm-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
