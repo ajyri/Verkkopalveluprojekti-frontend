@@ -22,13 +22,13 @@ ul{
 }
 
 .footer_info {
-  margin-left: 40px;
   color: #cbac88;
 }
 
 .subscribe {
   color: #cbac88;
-  margin-left: 400px;
+  margin: 0 auto;
+  max-width: 500px;
 }
 
 a{
