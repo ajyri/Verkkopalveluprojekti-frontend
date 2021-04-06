@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import Cart from './Cart.js'
+
 
 const URL = 'http://localhost/verkkopalvelu/'
 
@@ -8,7 +8,7 @@ export default function Products ({ trnro, addToCart }) {
 
   const [products, setProducts] = useState([])
   const [category, setCategory] = useState([])
-  const [cart, setCart] = useState(0)
+  
 
   useEffect(() => {
     let status = 0
@@ -64,7 +64,7 @@ export default function Products ({ trnro, addToCart }) {
           // Render item here..
           <div className='card-group col-lg-3 col-md-4 col-sm-6'>
             <div key={item.tuotenro} className='card'>
-              <img src={URL+'img/'+item.kuva} className='card-img-top' alt='' />
+              <img src={URL + 'img/' + item.kuva} className='card-img-top' alt='' />
               <div className='card-body d-flex flex-column'>
                 <div className='card-title row'>
                 <h5 className="col-8">{item.tuotenimi} </h5> <h5 className="col-4 card-text-right"> {item.hinta} €</h5>
