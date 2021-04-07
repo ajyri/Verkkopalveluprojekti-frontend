@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
@@ -53,7 +52,8 @@ let total = 0
                             {total.toFixed(1)}€</p>
                         </div>
                         <div className="text-center">
-                            <button className="btn btn-primary">Kassalle</button>
+                        <Link to={{
+                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button></Link>
                         </div>
                     </div>
                 </div>

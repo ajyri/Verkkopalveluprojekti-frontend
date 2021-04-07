@@ -33,7 +33,7 @@ export default function Products ({ trnro, addToCart }) {
 
   useEffect(() => {
     let status = 0
-    fetch(URL + 'categories.php?trnro=' + trnro)
+    fetch(URL + 'products.php?trnro=' + trnro)
       .then(res => {
         status = parseInt(res.status)
         return res.json()

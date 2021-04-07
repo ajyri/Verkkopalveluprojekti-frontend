@@ -5,6 +5,7 @@ import Home from './Components/Home.js'
 import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation} from 'react-router-dom';
 import Categories from './Components/Categories.js';
+import Checkout from './Components/Checkout.js';
 
 function App() {
 
@@ -61,6 +62,11 @@ function App() {
       exact
       />
       <Route path="/categories" render={() => <Categories
+      addToCart={addToCart}
+      trnro={trnro}
+      />}
+      />
+      <Route path="/checkout" render={() => <Checkout
       addToCart={addToCart}
       trnro={trnro}
       />}
