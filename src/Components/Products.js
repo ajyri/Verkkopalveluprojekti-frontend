@@ -64,7 +64,7 @@ export default function Products ({ trnro, addToCart }) {
           // Render item here..
           <div className='card-group col-lg-3 col-md-4 col-sm-6'>
             <div key={item.tuotenro} className='card mb-3'>
-             <img src={URL+'img/'+item.kuva} className='card-img-top' alt='' />
+             <img src={URL+'img/'+item.kuva} className='card-img-top img-fluid' alt='' />
               <div className='card-body d-flex flex-column'>
                 <div className='card-title row'>
                 <h5 className="col-8">{item.tuotenimi} </h5> <h5 className="col-4 card-text-right"> {item.hinta} €</h5>
