@@ -2,10 +2,8 @@ import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 
-
 export default function Header({ cart, addToCart, removeFromCart }) {
-let total = 0
-    
+let total = 0    
     return (
         <>
             <header className="row">
@@ -54,6 +52,7 @@ let total = 0
                         <div className="text-center">
                         <Link to={{
                                 pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button></Link>
+                        
                         </div>
                     </div>
                 </div>
