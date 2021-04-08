@@ -58,15 +58,15 @@ export default function Products ({ trnro, addToCart }) {
       >
         <h2>{category.map(category => category.trnimi)}</h2>
         <div className="container-fluid">
-          <div className="row flex-row flex-nowrap overflow-auto">
+          <div className="row flex-row flex-nowrap overflow-auto cards-container">
         {products.map(item => (
           // Render item here..
 
-              <div className='col-lg-3 col-md-4 col-sm-6 card-group'>
-                <div key={item.tuotenro} className='card mb-3'>
+              <div className='col-lg-3 col-md-4 col-sm-6 card-group pb-3'>
+                <div key={item.tuotenro} className='card'>
                   <img
                     src={URL + 'img/' + item.kuva}
-                    className='card-img-top'
+                    className='card-img-top img-fluid'
                     alt=''
                   />
                   <div className='card-body d-flex flex-column'>
