@@ -101,8 +101,8 @@ nav{
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
-    scrollbar-width: none;
-    scrollbar-color: #34291d #a37848;
+    scrollbar-width: 12px;
+    scrollbar-color: #A37848 #cbac88;
   }
 
   /* Chrome, Edge, and Safari */
