@@ -89,6 +89,7 @@ nav{
 .card {
   background-color: #cbac88;
   border: 1px solid black;
+  height: 100%;
   
 }
 .card-img-top {
@@ -96,3 +97,41 @@ nav{
   height: 200px;
   object-fit: cover;
 }
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: none;
+    scrollbar-color: #34291d #a37848;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+    margin-top: 10px;  }
+
+  *::-webkit-scrollbar-track {
+    background: #e9dccd;
+
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #A37848;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+  .cards-container::-webkit-scrollbar {
+    width: 12px;
+    margin-top: 10px;  }
+
+    .cards-container::-webkit-scrollbar-track {
+    background: #cbac88;
+
+  }
+
+  .cards-container::-webkit-scrollbar-thumb {
+    background-color: #A37848;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+
