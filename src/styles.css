@@ -98,6 +98,11 @@ nav{
   object-fit: cover;
 }
 
+#thumbnail{
+  width: 100px;
+  height: 100px;
+}
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
