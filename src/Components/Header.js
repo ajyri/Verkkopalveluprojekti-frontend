@@ -24,15 +24,14 @@ const filterProducts = (productList, query) => {
     });
 };
 
+
 export default function Header({ cart, addToCart, removeFromCart }) {
-let total = 0
+let total = 0    
 
 const {search} = window.location;
 const query = new URLSearchParams(search).get('s');
 const filteredproducts = filterProducts(productList, query);
 
-export default function Header({ cart, addToCart, removeFromCart }) {
-let total = 0    
     return (
         <>
             <header className="row">
@@ -100,3 +99,4 @@ let total = 0
         </>
     )
 }
+
