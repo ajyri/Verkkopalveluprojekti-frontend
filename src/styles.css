@@ -103,9 +103,12 @@ nav{
   object-fit: cover;
 }
 
-#thumbnail{
-  width: 100px;
-  height: 100px;
+.thumbnail img{
+  border-radius: 8px;
+  border: solid 1px black;
+  height: 90px;
+  width: 90px;
+  padding: 0px;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -145,4 +148,13 @@ nav{
     border: 2px solid #ffffff;
   }
   
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
   

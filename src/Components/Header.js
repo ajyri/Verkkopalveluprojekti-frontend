@@ -38,7 +38,7 @@ let total = 0
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
                                     <div>
-                                        < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>
+                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
                                 </li>
                             ))}
@@ -51,7 +51,9 @@ let total = 0
                         </div>
                         <div className="text-center">
                         <Link to={{
-                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button></Link>
+                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
+                                
+                        </Link>
                         
                         </div>
                     </div>

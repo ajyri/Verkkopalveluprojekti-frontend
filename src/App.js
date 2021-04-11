@@ -6,6 +6,7 @@ import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Categories from './Components/Categories.js';
 import Checkout from './Components/Checkout.js';
+import Details from './Components/Details.js'
 
 function App() {
 
@@ -77,7 +78,16 @@ function App() {
         />
         <Route path="/checkout" render={() => <Checkout
           addToCart={addToCart}
+          removeFromCart={removeFromCart}
           trnro={trnro}
+          cart={cart}
+        />}
+        />
+          <Route path="/details" render={() => <Details
+          addToCart={addToCart}
+          removeFromCart={removeFromCart}
+          trnro={trnro}
+          cart={cart}
         />}
         />
       </Switch>
