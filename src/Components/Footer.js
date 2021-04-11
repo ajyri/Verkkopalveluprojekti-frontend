@@ -16,7 +16,7 @@ export default function Footer() {
         </div>
         <div className="col-12">
           <button type="submit" className="btn btn-primary">
-            Tilaa uutiskirja
+            Tilaa uutiskirje
           </button>
         </div>
         </div>
@@ -28,8 +28,7 @@ export default function Footer() {
           <h5 className="footer_info text-uppercase">Kahvila ÄX</h5>
 
           <p className="footer_info">
-           Jotain paskaa siitä kuinka ollaan parempia kuin mikään muu kahvia myyvä yritys koska välitämme
-           niin paljon meidän asiakkaistamme.
+           Paras ja hipein ja coolein ja hipsterein kahvila lähistöllä! Tule nauttimaan chillisti veli
           </p>
         </div>
    

@@ -1,9 +1,13 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
+=======
+>>>>>>> 20089d766ba7bdb07c1fd63eaf93124b00b4aefe
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 import Search from './Search.js';
 
+<<<<<<< HEAD
 const URL = 'http://localhost/verkkopalvelu/'
 
 const productList = [
@@ -31,6 +35,10 @@ const {search} = window.location;
 const query = new URLSearchParams(search).get('s');
 const filteredproducts = filterProducts(productList, query);
 
+=======
+export default function Header({ cart, addToCart, removeFromCart }) {
+let total = 0    
+>>>>>>> 20089d766ba7bdb07c1fd63eaf93124b00b4aefe
     return (
         <>
             <header className="row">
@@ -71,10 +79,10 @@ const filteredproducts = filterProducts(productList, query);
                     <div className="dropdown-menu" id="cartItems">
                         <ul className="text-center">
                             {cart.map(item => (
-                                <li className="border-bottom border-dark">
+                                <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
                                     <div>
-                                        < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>
+                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
                                 </li>
                             ))}
@@ -86,7 +94,11 @@ const filteredproducts = filterProducts(productList, query);
                             {total.toFixed(1)}€</p>
                         </div>
                         <div className="text-center">
-                            <button className="btn btn-primary">Kassalle</button>
+                        <Link to={{
+                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
+                                
+                        </Link>
+                        
                         </div>
                     </div>
                 </div>

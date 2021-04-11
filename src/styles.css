@@ -76,6 +76,11 @@ nav{
   color: white;
 }
 
+.navbar-toggler-icon {
+  /* navigaation hampurilaisvalikko, asetetaan sille väri omasta paletista */
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(52, 41, 29,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
 #logo{
   max-width: 100%;
   height: auto;
@@ -89,8 +94,73 @@ nav{
 .card {
   background-color: #cbac88;
   border: 1px solid black;
+  height: 100%;
+  
+}
+.card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
+.thumbnail img{
+  border-radius: 8px;
+  border: solid 1px black;
+  height: 90px;
+  width: 90px;
+  padding: 0px;
+}
+
+<<<<<<< HEAD
 .hidden {
   display: none;
 }
+=======
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: 12px;
+    scrollbar-color: #A37848 #cbac88;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 12px;
+    margin-top: 10px;  }
+
+  *::-webkit-scrollbar-track {
+    background: #e9dccd;
+
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #A37848;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+  .cards-container::-webkit-scrollbar {
+    width: 12px;
+    margin-top: 10px;  }
+
+    .cards-container::-webkit-scrollbar-track {
+    background: #cbac88;
+
+  }
+
+  .cards-container::-webkit-scrollbar-thumb {
+    background-color: #A37848;
+    border-radius: 12px;
+    border: 2px solid #ffffff;
+  }
+  
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+  
+>>>>>>> 20089d766ba7bdb07c1fd63eaf93124b00b4aefe
