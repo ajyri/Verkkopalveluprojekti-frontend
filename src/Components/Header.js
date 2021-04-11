@@ -1,12 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
+import Search from './Search.js';
 
+const URL = 'http://localhost/verkkopalvelu/'
+
+const productList = [
+    { id: '1', name: 'Kahvi' },
+    { id: '2', name: 'Tee' },
+    { id: '3', name: 'Kaakao' },
+    { id: '4', name: 'Leivos' },
+]
+
+const filterProducts = (productList, query) => {
+    if (!query) {
+        return productList;
+    }
+
+    return productList.filter((product) => {
+        const productName = product.name.toLowerCase();
+        return productName.includes(query);
+    });
+};
 
 export default function Header({ cart, addToCart, removeFromCart }) {
 let total = 0
-    
+
+const {search} = window.location;
+const query = new URLSearchParams(search).get('s');
+const filteredproducts = filterProducts(productList, query);
+
     return (
         <>
             <header className="row">
@@ -28,6 +52,15 @@ let total = 0
                                 </a>
                                 <Dropdown />
                             </li>
+                        </ul>
+                        
+                    </div>
+                    <div className="col-12">
+                        <Search />
+                        <ul className="hidden">
+                            {filteredproducts.map(product => (
+                            <li key={product.key}>{product.name}</li>
+                            ))}
                         </ul>
                     </div>
                 </nav>

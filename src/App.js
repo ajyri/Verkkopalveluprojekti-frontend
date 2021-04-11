@@ -6,6 +6,7 @@ import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation} from 'react-router-dom';
 import Categories from './Components/Categories.js';
 
+
 function App() {
 
   const [cart, setCart] = useState([]);
