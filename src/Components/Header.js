@@ -1,13 +1,9 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from 'react'
-=======
->>>>>>> 20089d766ba7bdb07c1fd63eaf93124b00b4aefe
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 import Search from './Search.js';
 
-<<<<<<< HEAD
 const URL = 'http://localhost/verkkopalvelu/'
 
 const productList = [
@@ -35,10 +31,8 @@ const {search} = window.location;
 const query = new URLSearchParams(search).get('s');
 const filteredproducts = filterProducts(productList, query);
 
-=======
 export default function Header({ cart, addToCart, removeFromCart }) {
 let total = 0    
->>>>>>> 20089d766ba7bdb07c1fd63eaf93124b00b4aefe
     return (
         <>
             <header className="row">
