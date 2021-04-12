@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-
+import Header from './Header.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 export default function Products ({ trnro, addToCart }) {
@@ -59,7 +59,7 @@ export default function Products ({ trnro, addToCart }) {
         <h2>{category.map(category => category.trnimi)}</h2>
         <div className="container-fluid">
           <div className="row flex-row flex-nowrap overflow-auto cards-container">
-        {products.map(item => (
+          {products.map(item => (
           // Render item here..
 
               <div className='col-lg-3 col-md-4 col-sm-6 card-group pb-3'>
