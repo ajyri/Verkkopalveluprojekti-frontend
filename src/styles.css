@@ -161,4 +161,10 @@ nav{
               user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
   }
+
+  .centered-input {
+    margin-left: auto;
+    margin-right: auto;
+    width: 25em;
+  }
   

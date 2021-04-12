@@ -6,7 +6,9 @@ import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Categories from './Components/Categories.js';
 import Checkout from './Components/Checkout.js';
-import Details from './Components/Details.js'
+import Details from './Components/Details.js';
+import Login from './Components/Login.js';
+import Admin from './Components/Admin.js';
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
@@ -111,6 +113,12 @@ function App() {
           trnro={trnro}
           cart={cart}
         />}
+        />
+        <Route path="/login" render={() => <Login/>
+        }
+        />
+        <Route path="/admin" render={() => <Admin/>
+        }
         />
       </Switch>
       <Footer />
