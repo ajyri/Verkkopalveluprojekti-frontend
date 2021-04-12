@@ -1,9 +1,37 @@
+import React, { useState, useEffect } from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
+import Search from './Search.js';
+
+const URL = 'http://localhost/verkkopalvelu/'
+
+const productList = [
+    { id: '1', name: 'Kahvi' },
+    { id: '2', name: 'Tee' },
+    { id: '3', name: 'Kaakao' },
+    { id: '4', name: 'Leivos' },
+]
+
+const filterProducts = (productList, query) => {
+    if (!query) {
+        return productList;
+    }
+
+    return productList.filter((product) => {
+        const productName = product.name.toLowerCase();
+        return productName.includes(query);
+    });
+};
+
 
 export default function Header({ cart, addToCart, removeFromCart }) {
 let total = 0    
+
+const {search} = window.location;
+const query = new URLSearchParams(search).get('s');
+const filteredproducts = filterProducts(productList, query);
+
     return (
         <>
             <header className="row">
@@ -26,6 +54,15 @@ let total = 0
                                 <Dropdown />
                             </li>
                         </ul>
+                        
+                    </div>
+                    <div className="col-12">
+                        <Search />
+                        <ul className="hidden">
+                            {filteredproducts.map(product => (
+                            <li key={product.key}>{product.name}</li>
+                            ))}
+                        </ul>
                     </div>
                 </nav>
                 <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
@@ -38,7 +75,7 @@ let total = 0
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
                                     <div>
-                                        < span type="button" className="ps-2" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" onClick={() => addToCart(item)}>+</span>
+                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
                                 </li>
                             ))}
@@ -51,7 +88,9 @@ let total = 0
                         </div>
                         <div className="text-center">
                         <Link to={{
-                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button></Link>
+                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
+                                
+                        </Link>
                         
                         </div>
                     </div>
@@ -60,3 +99,4 @@ let total = 0
         </>
     )
 }
+
