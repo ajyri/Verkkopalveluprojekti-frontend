@@ -5,28 +5,23 @@ import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import Products from './Products.js';
 
-const URL = 'http://localhost/verkkopalvelu/'
-
-export default function Header({ Products, cart, addToCart, removeFromCart }) {
-let total = 0    
-
-const productList = [
-    {Products}
-]
-
+export default function Header({ products, cart, addToCart, removeFromCart}) {
+   
 const filterProducts = (productList, query) => {
     if (!query) {
         return productList;
     }
-
     return productList.filter((product) => {
         const productName = product.name;
         return productName;
     });
 };
 
-const {search} = window.location;
+let total = 0    
+const search = window.location;
 const query = new URLSearchParams(search).get('s');
+const productList = products
+
 const filteredproducts = filterProducts(productList, query);
 
     return (
@@ -55,9 +50,9 @@ const filteredproducts = filterProducts(productList, query);
                     </div>
                     <div className="col-12">
                         <Search />
-                        <ul>
-                            {filteredproducts.map(product => (
-                            <li key={product.key}>{product.name}</li>
+                        <ul className="hidden">
+                        {filteredproducts.map(product => (
+                            <li key={product.tuotenro}>{product.tuotenimi}</li>
                             ))}
                         </ul>
                     </div>
