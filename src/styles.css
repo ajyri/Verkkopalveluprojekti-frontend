@@ -108,7 +108,7 @@ nav{
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
     width: 12px;
-    margin-top: 10px;  }
+ }
 
   *::-webkit-scrollbar-track {
     background: #e9dccd;
@@ -122,7 +122,8 @@ nav{
   }
   .cards-container::-webkit-scrollbar {
     width: 12px;
-    margin-top: 10px;  }
+    height:13px !important;
+ }
 
     .cards-container::-webkit-scrollbar-track {
     background: #cbac88;
