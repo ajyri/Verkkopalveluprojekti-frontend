@@ -3,14 +3,15 @@ import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 import Search from './Search.js';
+import Products from './Products.js';
 
 const URL = 'http://localhost/verkkopalvelu/'
 
+export default function Header({ Products, cart, addToCart, removeFromCart }) {
+let total = 0    
+
 const productList = [
-    { id: '1', name: 'Kahvi' },
-    { id: '2', name: 'Tee' },
-    { id: '3', name: 'Kaakao' },
-    { id: '4', name: 'Leivos' },
+    {Products}
 ]
 
 const filterProducts = (productList, query) => {
@@ -19,14 +20,10 @@ const filterProducts = (productList, query) => {
     }
 
     return productList.filter((product) => {
-        const productName = product.name.toLowerCase();
-        return productName.includes(query);
+        const productName = product.name;
+        return productName;
     });
 };
-
-
-export default function Header({ cart, addToCart, removeFromCart }) {
-let total = 0    
 
 const {search} = window.location;
 const query = new URLSearchParams(search).get('s');
@@ -58,7 +55,7 @@ const filteredproducts = filterProducts(productList, query);
                     </div>
                     <div className="col-12">
                         <Search />
-                        <ul className="hidden">
+                        <ul>
                             {filteredproducts.map(product => (
                             <li key={product.key}>{product.name}</li>
                             ))}
