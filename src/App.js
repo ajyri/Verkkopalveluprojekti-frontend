@@ -6,14 +6,18 @@ import Footer from './Components/Footer.js'
 import { Switch, Route, useLocation } from 'react-router-dom';
 import Categories from './Components/Categories.js';
 import Checkout from './Components/Checkout.js';
-import Details from './Components/Details.js'
-
+import Details from './Components/Details.js';
+import Login from './Components/Login.js';
+import Admin from './Components/Admin.js';
+const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
 
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
+  const [products, setProducts] = useState([])
+
   let location = useLocation();
 
   useEffect(() => {
@@ -28,7 +32,26 @@ function App() {
     }
   }, [])
 
-
+  useEffect(() => {
+    let status = 0
+    fetch(URL + 'index.php')
+      .then(res => {
+        status = parseInt(res.status)
+        return res.json()
+      })
+      .then(
+        res => {
+          if (status === 200) {
+            setProducts(res)
+          } else {
+            alert(res.error)
+          }
+        },
+        error => {
+          alert(error)
+        }
+      )
+  },[])
 
   function addToCart(item) {
     //See if item already exists in array, if not add it.
@@ -66,7 +89,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} />
+      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
@@ -90,6 +113,12 @@ function App() {
           trnro={trnro}
           cart={cart}
         />}
+        />
+        <Route path="/login" render={() => <Login/>
+        }
+        />
+        <Route path="/admin" render={() => <Admin/>
+        }
         />
       </Switch>
       <Footer />

@@ -3,41 +3,42 @@ import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 import Search from './Search.js';
+import Products from './Products.js';
 
-const URL = 'http://localhost/verkkopalvelu/'
-
-const productList = [
-    { id: '1', name: 'Kahvi' },
-    { id: '2', name: 'Tee' },
-    { id: '3', name: 'Kaakao' },
-    { id: '4', name: 'Leivos' },
-]
-
+export default function Header({ products, cart, addToCart, removeFromCart}) {
+   
 const filterProducts = (productList, query) => {
     if (!query) {
         return productList;
     }
-
     return productList.filter((product) => {
-        const productName = product.name.toLowerCase();
-        return productName.includes(query);
+        const productName = product.name;
+        return productName;
     });
 };
 
-
-export default function Header({ cart, addToCart, removeFromCart }) {
 let total = 0    
-
-const {search} = window.location;
+const search = window.location;
 const query = new URLSearchParams(search).get('s');
+const productList = products
+
 const filteredproducts = filterProducts(productList, query);
 
     return (
-        <>
+        <>  
+            
             <header className="row">
+                <div className="col-12 ">
+                    <div className="d-flex justify-content-end p-3">
+                        <Link to={{
+                            pathname:'/login'}} > <button className="btn btn-primary">Kirjaudu </button>    
+                        </Link>
+                    </div>
+                </div>
                 <div className="col-lg-3 col-md-7 text-start pt-2 mb-1">
                     <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
+                               
                 <nav className=" col-lg-3 col-md-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -59,12 +60,13 @@ const filteredproducts = filterProducts(productList, query);
                     <div className="col-12">
                         <Search />
                         <ul className="hidden">
-                            {filteredproducts.map(product => (
-                            <li key={product.key}>{product.name}</li>
+                        {filteredproducts.map(product => (
+                            <li key={product.tuotenro}>{product.tuotenimi}</li>
                             ))}
                         </ul>
                     </div>
                 </nav>
+                
                 <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
@@ -93,8 +95,11 @@ const filteredproducts = filterProducts(productList, query);
                         </Link>
                         
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
             </header>
         </>
     )
