@@ -107,6 +107,10 @@ function App() {
           cart={cart}
         />}
         />
+          <Route path="/checkout" render={() => <Checkout
+          cart={cart}
+        />}
+        />
           <Route path="/details" render={() => <Details
           addToCart={addToCart}
           removeFromCart={removeFromCart}
