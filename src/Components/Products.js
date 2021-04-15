@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Header from './Header.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 export default function Products ({ trnro, addToCart }) {
