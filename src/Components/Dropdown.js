@@ -27,7 +27,7 @@ useEffect(() => {
         	alert(error);
         }
     )
-}, []);
+}, [category]);
 
     return (
         <>
