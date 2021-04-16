@@ -4,6 +4,7 @@ import Products from './Products';
 const URL = 'http://localhost/verkkopalvelu/';
 
 export default function Admin() {
+    const [imageName, setImageName] = useState ('kahvi_place.jpg'); 
     const [categories, setCategories] = useState([]);
     const [newCategory, setNewCategory] = useState('');
     const [products, setProducts] = useState([]);
@@ -11,7 +12,9 @@ export default function Admin() {
     const [newProductName, setNewProductName] = useState('');
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
-    const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg');
+    const [newProductPicture, setNewProductPicture] = useState(imageName);
+    const [file, setFile] = useState(null);
+    
     /* const [categoryUpdated, setCategoryUpdated] = useState(''); */
     
     useEffect(() => {
@@ -178,6 +181,7 @@ export default function Admin() {
 
     function saveProducts(e) {
       e.preventDefault();
+      saveImage(e);
       let status = 0;
      /*  if (newCategory === '') {
           alert("Syötä uuden tuoteryhmän nimi!")
@@ -247,6 +251,39 @@ export default function Admin() {
       }
     )
   }
+
+  function saveImage(e) {
+    let status = 0;
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('file',file);
+    fetch('http://localhost/verkkopalvelu/add_picture.php',
+    {
+      method: 'POST',
+      body: formData
+    }
+    )
+    .then((res) => {
+      status = parseInt(res.status)
+      return res.json()  
+    })
+    .then(
+      (res) => {
+        if (status === 200) {
+          
+        } else {
+          alert(res.error)
+        }      
+    },
+    error => {
+      alert(error)
+    }
+    )
+  }
+  function handleChange(e) {
+    setFile(e.target.files[0]);
+  }
+
     
     return (
         <>  
@@ -272,6 +309,19 @@ export default function Admin() {
                 <div className="col-lg-3 mt-2">
                   <h5>Lisää uusi tuote: </h5>
                   <form action="submit" onSubmit={saveProducts}>
+                  <label htmlFor="img">Tuotekuva: </label>
+                    {file != null ? ( 
+                    <>
+                      <p>Nimi: {file.name}</p>
+                      <p>Tyyppi: {file.type}</p>
+                      <p>Koko: {Number((file.size) / 1000000).toFixed(2)} MT</p>
+                    </>
+
+                      ) : (
+                        <></>
+                      )  
+                      } 
+                  <input className="form-control" id="img" type="file" onChange={handleChange}/>
                   <label htmlFor="tuotenimi">Tuotenimi: </label>
                   <input className="form-control" id="tuotenimi" type="text" value={newProductName} onChange={e => setNewProductName(e.target.value)}/>
                   <label htmlFor="hinta">Hinta: </label>
@@ -281,7 +331,9 @@ export default function Admin() {
                   <label htmlFor="kuvaus">Tuotekuvaus: </label>
                   <textarea className="form-control" id="kuvaus" type="text" maxLength="255" value={newProductDescription} onChange={e => setNewProductDescription(e.target.value)}/>
                   <button className="btn btn-primary mt-2">Lisää</button>
+                  
                   </form>
+                  
                   <ul className="mt-3">
                     {products.map(product => (
                         <li className="">{product.tuotenimi} <button onClick={() => deleteProduct(product.tuotenro)} className="btn btn-primary mt-2">Poista</button>
