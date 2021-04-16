@@ -1,19 +1,18 @@
-import React, {useState, useEffect} from 'react'
-import Products from './Products';
+import React, {useState, useEffect} from 'react';
 
 const URL = 'http://localhost/verkkopalvelu/';
 
 export default function Admin() {
-    const [imageName, setImageName] = useState ('kahvi_place.jpg'); 
+    const [file, setFile] = useState(null);  
     const [categories, setCategories] = useState([]);
     const [newCategory, setNewCategory] = useState('');
     const [products, setProducts] = useState([]);
-    const [trnro, setTrnro] = useState(null);
+    const [trnro, setTrnro] = useState(1);
     const [newProductName, setNewProductName] = useState('');
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
-    const [newProductPicture, setNewProductPicture] = useState(imageName);
-    const [file, setFile] = useState(null);
+    const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg');
+    
     
     /* const [categoryUpdated, setCategoryUpdated] = useState(''); */
     
@@ -41,7 +40,7 @@ export default function Admin() {
     useEffect(() => {
     
       let status = 0;
-      fetch(URL + 'products.php?trnro=1' )
+      fetch(URL + 'products.php?trnro=' + trnro)
       .then(res => {
           status = parseInt(res.status);
           return res.json()
@@ -50,7 +49,7 @@ export default function Admin() {
           (res) => {
             if (status === 200) {
                setProducts(res)
-               setTrnro(1)
+               /* setTrnro(1) */
             } else {
              alert(res.error);
             }
@@ -213,6 +212,7 @@ export default function Admin() {
                   setNewProductName('');
                   setNewProductPicture('');
                   setNewProductPrice('');
+                  Products(trnro);
             } else {
                   alert(res.error);
             }
@@ -270,7 +270,6 @@ export default function Admin() {
     .then(
       (res) => {
         if (status === 200) {
-          
         } else {
           alert(res.error)
         }      
@@ -283,7 +282,7 @@ export default function Admin() {
   function handleChange(e) {
     setFile(e.target.files[0]);
   }
-
+  
     
     return (
         <>  
