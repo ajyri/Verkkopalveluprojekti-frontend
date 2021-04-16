@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import {useState} from 'react'
 const URL = 'http://localhost/verkkopalvelu/'
 
@@ -8,10 +8,11 @@ export default function Details({cart}) {
 const [name, setName] = useState(null)
 const [phone, setPhone] = useState(null)
 const [details, setDetails] = useState(null)
+const history = useHistory();
 
+let status = 0
 function save(e) {
     e.preventDefault();
-    let status = 0
     let kpl = [];
     let tuotenro = [];
 
@@ -45,8 +46,7 @@ function save(e) {
         })
         .then(result => {
             if(status === 200){
-                console.log(status)
-                console.log(result)
+            history.push("/")
             }
             else{
                 alert(result.error);
