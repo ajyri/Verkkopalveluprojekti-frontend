@@ -3,13 +3,14 @@ import { Link, useHistory } from 'react-router-dom'
 import {useState} from 'react'
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Details({cart}) {
+export default function Details({cart, emptyCart}) {
 
 const [name, setName] = useState(null)
 const [phone, setPhone] = useState(null)
 const [details, setDetails] = useState(null)
 const history = useHistory();
 
+let total = 0
 let status = 0
 function save(e) {
     e.preventDefault();
@@ -46,7 +47,8 @@ function save(e) {
         })
         .then(result => {
             if(status === 200){
-            history.push("/")
+            emptyCart()
+            history.push("/confirm")
             }
             else{
                 alert(result.error);
@@ -69,13 +71,18 @@ function save(e) {
   <div className="col-4">
   <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Lisätietoja tilauksesta" value={details} onChange={e => setDetails(e.target.value)}></textarea>
   </div>
-  <div className="col-4">
+  <div className="col-4 text-center">
       <h4 className="">Yhteenveto tilauksesta:</h4>
       {cart.map(item => (
                     <div>
-                        <span>{item.tuotenimi}</span> <span>{item.hinta * item.qty}</span>
+                        <span>{item.tuotenimi}</span> <span>{(item.hinta * item.qty).toFixed(2)}€</span>
                     </div>
             ))}
+            <hr></hr>
+       <p>Summa: {cart.forEach(item => {
+                                total = total + (item.hinta * item.qty) 
+                            })}
+                            {total.toFixed(2)}€</p>
   </div>
   </div>
   <div className="row">

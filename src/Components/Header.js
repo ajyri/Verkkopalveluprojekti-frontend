@@ -75,7 +75,7 @@ const filteredproducts = filterProducts(productList, query);
                         <ul className="text-center">
                             {cart.map(item => (
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
-                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
+                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(2)}€
                                     <div>
                                         < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
@@ -86,7 +86,7 @@ const filteredproducts = filterProducts(productList, query);
                         <p>Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
-                            {total.toFixed(1)}€</p>
+                            {total.toFixed(2)}€</p>
                         </div>
                         <div className="text-center">
                         <Link to={{
