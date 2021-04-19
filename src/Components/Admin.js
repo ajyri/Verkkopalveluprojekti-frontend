@@ -11,7 +11,7 @@ export default function Admin() {
     const [newProductName, setNewProductName] = useState('');
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
-    const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg');
+    /* const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg'); */
     
     
     /* const [categoryUpdated, setCategoryUpdated] = useState(''); */
@@ -180,12 +180,16 @@ export default function Admin() {
 
     function saveProducts(e) {
       e.preventDefault();
+      if (file === null) {
+          alert('Et voi lisätä tuotetta ilman kuvaa!');
+          return; 
+      } else if (newProductName === '' || newProductPrice === '' || newProductDescription === '' ) {
+        alert('Täytä kaikki kentät');
+        return;
+      }
       saveImage(e);
       let status = 0;
-     /*  if (newCategory === '') {
-          alert("Syötä uuden tuoteryhmän nimi!")
-          return;
-      } */
+   
       fetch(URL + 'new_product.php',{
           method: 'POST',
           headers: {
@@ -197,7 +201,7 @@ export default function Admin() {
             hinta: newProductPrice,
             kuvaus: newProductDescription,
             trnro: trnro,
-            kuva: newProductPicture
+            kuva: file.name
           })
       })
       .then(res => {
@@ -210,7 +214,7 @@ export default function Admin() {
                 setProducts(newProduct=>[...newProduct, res]);
                   setNewProductDescription('');
                   setNewProductName('');
-                  setNewProductPicture('');
+                  /* setNewProductPicture(''); */
                   setNewProductPrice('');
                   Products(trnro);
             } else {
@@ -325,8 +329,8 @@ export default function Admin() {
                   <input className="form-control" id="tuotenimi" type="text" value={newProductName} onChange={e => setNewProductName(e.target.value)}/>
                   <label htmlFor="hinta">Hinta: </label>
                   <input className="form-control" id="hinta" type="number" value={newProductPrice} onChange={e => setNewProductPrice(e.target.value)}/>
-                  <label htmlFor="kuva">Kuvan nimi: </label>
-                  <input className="form-control" id="kuva" type="text" value={newProductPicture} onChange={e => setNewProductPicture(e.target.value)}/>
+                 {/*  <label htmlFor="kuva">Kuvan nimi: </label>
+                  <input className="form-control" id="kuva" type="text" value={newProductPicture} onChange={e => setNewProductPicture(e.target.value)} hidden/> */}
                   <label htmlFor="kuvaus">Tuotekuvaus: </label>
                   <textarea className="form-control" id="kuvaus" type="text" maxLength="255" value={newProductDescription} onChange={e => setNewProductDescription(e.target.value)}/>
                   <button className="btn btn-primary mt-2">Lisää</button>

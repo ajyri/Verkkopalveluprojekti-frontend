@@ -1,10 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 
-
 const URL = 'http://localhost/verkkopalvelu/';
 
-export default function Dropdown() {
+export default function Dropdown(trnro) {
     const [category, setCategory] = useState([]);
     
 
@@ -18,16 +17,15 @@ useEffect(() => {
     .then(
         (res) => {
         	if (status === 200) {
-        	setCategory(res);
-            
+        	setCategory(res);      
         	} else {
             alert(res.error);
         	}
         }, (error) => {
         	alert(error);
-        }
+        }   
     )
-}, [category]);
+}, [trnro]);
 
     return (
         <>

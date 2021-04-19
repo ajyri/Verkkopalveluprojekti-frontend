@@ -95,7 +95,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} />
+      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
@@ -125,7 +125,8 @@ function App() {
           cart={cart}
         />}
         />
-        <Route path="/login" render={() => <Login/>
+        <Route path="/login" render={() => <Login
+        />
         }
         />
         <Route path="/admin" render={() => <Admin/>
