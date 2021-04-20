@@ -1,29 +1,91 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import {useState} from 'react'
+const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Details() {
+export default function Details({cart, emptyCart}) {
+
+const [name, setName] = useState(null)
+const [phone, setPhone] = useState(null)
+const [details, setDetails] = useState(null)
+const history = useHistory();
+
+let total = 0
+let status = 0
+function save(e) {
+    e.preventDefault();
+    let kpl = [];
+    let tuotenro = [];
+
+    ( cart.forEach(item => {
+        kpl.push(item.qty)
+        tuotenro.push(item.tuotenro)
+    }))
+
+    if(name === null || phone === null){
+        alert('Syötä nimi ja puhelinnumero.')
+        return
+    }else{
+        fetch(URL + 'order.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                tuotenro: tuotenro,    
+                kpl: kpl,
+                tiedot: details,
+                asiakas: name,
+                aspuh: phone
+                })
+        })
+        .then(result => {
+            status = parseInt(result.status);
+            console.log(result)
+            return result;
+        })
+        .then(result => {
+            if(status === 200){
+            emptyCart()
+            history.push("/confirm")
+            }
+            else{
+                alert(result.error);
+                console.log(result)
+            }
+        },
+        error => console.log(error)
+        )
+    }
+}
+
     return (
         <>
-<form action="">
+<form onSubmit={save}>
 <div className="row g-3 mt-1">
   <div className="col-4">
-    <input type="text" className="form-control" placeholder="First name" aria-label="First name"></input>
-    <input type="text" className="form-control" placeholder="First name" aria-label="First name"></input>
-    <input type="text" className="form-control" placeholder="First name" aria-label="First name"></input>
-    <input type="text" className="form-control" placeholder="First name" aria-label="First name"></input>
+    <input type="text" className="form-control pt-1" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} ></input>
+    <input type="text" className="form-control pt-1 mt-3" placeholder="Puhelinnumero" value={phone} onChange={e => setPhone(e.target.value)}></input>
   </div>
   <div className="col-4">
-    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name"></input>
-    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name"></input>
-    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name"></input>
-    <input type="text" className="form-control" placeholder="Last name" aria-label="Last name"></input>
+  <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Lisätietoja tilauksesta" value={details} onChange={e => setDetails(e.target.value)}></textarea>
   </div>
-  <div className="col-4">
-  <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+  <div className="col-4 text-center">
+      <h4 className="">Yhteenveto tilauksesta:</h4>
+      {cart.map(item => (
+                    <div>
+                        <span>{item.tuotenimi}</span> <span>{(item.hinta * item.qty).toFixed(2)}€</span>
+                    </div>
+            ))}
+            <hr></hr>
+       <p>Summa: {cart.forEach(item => {
+                                total = total + (item.hinta * item.qty) 
+                            })}
+                            {total.toFixed(2)}€</p>
   </div>
-</div>
-</form>
-            <div className="row">
+  </div>
+  <div className="row">
                 <div className="col-1 py-1">
                 <Link to={{
                                 pathname:'/checkout'}} > <button className="btn btn-primary">Edellinen</button>
@@ -31,16 +93,15 @@ export default function Details() {
                 </Link>
                 </div>
                 <div className="col-8"></div>
-                <div className="col-2">
+                <div className="col-1">
 
                 </div>
-                <div className="col-1 text-end py-1">
-                <Link to={{
-                                pathname:'/details'}} > <button className="btn btn-primary">Seuraava</button>
-                                
-                </Link>
+                <div className="col-2 text-end  py-1">
+                <button className="btn btn-primary" type="submit">Tilaa tuotteet</button>
                 </div>
             </div>
+</form>
+           
         </>
     )
 }

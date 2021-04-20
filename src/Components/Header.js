@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import Products from './Products.js';
 
-export default function Header({ products, cart, addToCart, removeFromCart}) {
+export default function Header({ products, cart, addToCart, removeFromCart, trnro}) {
    
 const filterProducts = (productList, query) => {
     if (!query) {
@@ -25,11 +25,20 @@ const productList = products
 const filteredproducts = filterProducts(productList, query);
 
     return (
-        <>
+        <>  
+            
             <header className="row">
+                {/* <div className="col-12 ">
+                    <div className="d-flex justify-content-end p-3">
+                        <Link to={{
+                            pathname:'/login'}} > <button className="btn btn-primary">Kirjaudu </button>    
+                        </Link>
+                    </div>
+                </div> */}
                 <div className="col-lg-3 col-md-7 text-start pt-2 mb-1">
                     <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
+                               
                 <nav className=" col-lg-3 col-md-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -43,7 +52,7 @@ const filteredproducts = filterProducts(productList, query);
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
                                 </a>
-                                <Dropdown />
+                                <Dropdown trnro={trnro}/>
                             </li>
                         </ul>
                         
@@ -57,6 +66,7 @@ const filteredproducts = filterProducts(productList, query);
                         </ul>
                     </div>
                 </nav>
+                
                 <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
@@ -65,7 +75,7 @@ const filteredproducts = filterProducts(productList, query);
                         <ul className="text-center">
                             {cart.map(item => (
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
-                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(1)}€
+                                    {item.tuotenimi} {(item.hinta * item.qty).toFixed(2)}€
                                     <div>
                                         < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
@@ -76,7 +86,7 @@ const filteredproducts = filterProducts(productList, query);
                         <p>Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
-                            {total.toFixed(1)}€</p>
+                            {total.toFixed(2)}€</p>
                         </div>
                         <div className="text-center">
                         <Link to={{
@@ -85,8 +95,11 @@ const filteredproducts = filterProducts(productList, query);
                         </Link>
                         
                         </div>
+                        
                     </div>
+                    
                 </div>
+                
             </header>
         </>
     )

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import Header from './Header.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 export default function Products ({ trnro, addToCart }) {
@@ -72,7 +71,7 @@ export default function Products ({ trnro, addToCart }) {
                   <div className='card-body d-flex flex-column'>
                     <div className='card-title row'>
                       <h5 className='col-8'>{item.tuotenimi} </h5>{' '}
-                      <h5 className='col-4 card-text-right'> {item.hinta} €</h5>
+                      <h5 className='col-4 card-text-right'> {Number(item.hinta).toFixed(2)} €</h5>
                     </div>
                     <p className='card-text'>{item.kuvaus}</p>
 
