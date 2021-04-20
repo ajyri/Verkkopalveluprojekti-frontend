@@ -9,6 +9,7 @@ import Checkout from './Components/Checkout.js';
 import Details from './Components/Details.js';
 import Login from './Components/Login.js';
 import Admin from './Components/Admin.js';
+import Confirm from './Components/Confirm.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
@@ -87,9 +88,14 @@ function App() {
     }
   }
 
+  function emptyCart(){
+    setCart([])
+    setQty([])
+  }
+
   return (
     <div className="container">
-      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} />
+      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
@@ -114,14 +120,19 @@ function App() {
           <Route path="/details" render={() => <Details
           addToCart={addToCart}
           removeFromCart={removeFromCart}
+          emptyCart={emptyCart}
           trnro={trnro}
           cart={cart}
         />}
         />
-        <Route path="/login" render={() => <Login/>
+        <Route path="/login" render={() => <Login
+        />
         }
         />
         <Route path="/admin" render={() => <Admin/>
+        }
+        />
+        <Route path="/confirm" render={() => <Confirm/>
         }
         />
       </Switch>

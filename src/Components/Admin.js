@@ -1,19 +1,18 @@
-import React, {useState, useEffect} from 'react'
-import Products from './Products';
+import React, {useState, useEffect} from 'react';
 
 const URL = 'http://localhost/verkkopalvelu/';
 
 export default function Admin() {
-    const [imageName, setImageName] = useState ('kahvi_place.jpg'); 
+    const [file, setFile] = useState(null);  
     const [categories, setCategories] = useState([]);
     const [newCategory, setNewCategory] = useState('');
     const [products, setProducts] = useState([]);
-    const [trnro, setTrnro] = useState(null);
+    const [trnro, setTrnro] = useState(1);
     const [newProductName, setNewProductName] = useState('');
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
-    const [newProductPicture, setNewProductPicture] = useState(imageName);
-    const [file, setFile] = useState(null);
+    /* const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg'); */
+    
     
     /* const [categoryUpdated, setCategoryUpdated] = useState(''); */
     
@@ -41,7 +40,7 @@ export default function Admin() {
     useEffect(() => {
     
       let status = 0;
-      fetch(URL + 'products.php?trnro=1' )
+      fetch(URL + 'products.php?trnro=' + trnro)
       .then(res => {
           status = parseInt(res.status);
           return res.json()
@@ -50,7 +49,7 @@ export default function Admin() {
           (res) => {
             if (status === 200) {
                setProducts(res)
-               setTrnro(1)
+               /* setTrnro(1) */
             } else {
              alert(res.error);
             }
@@ -181,12 +180,16 @@ export default function Admin() {
 
     function saveProducts(e) {
       e.preventDefault();
+      if (file === null) {
+          alert('Et voi lisätä tuotetta ilman kuvaa!');
+          return; 
+      } else if (newProductName === '' || newProductPrice === '' || newProductDescription === '' ) {
+        alert('Täytä kaikki kentät');
+        return;
+      }
       saveImage(e);
       let status = 0;
-     /*  if (newCategory === '') {
-          alert("Syötä uuden tuoteryhmän nimi!")
-          return;
-      } */
+   
       fetch(URL + 'new_product.php',{
           method: 'POST',
           headers: {
@@ -198,7 +201,7 @@ export default function Admin() {
             hinta: newProductPrice,
             kuvaus: newProductDescription,
             trnro: trnro,
-            kuva: newProductPicture
+            kuva: file.name
           })
       })
       .then(res => {
@@ -211,8 +214,9 @@ export default function Admin() {
                 setProducts(newProduct=>[...newProduct, res]);
                   setNewProductDescription('');
                   setNewProductName('');
-                  setNewProductPicture('');
+                  /* setNewProductPicture(''); */
                   setNewProductPrice('');
+                  Products(trnro);
             } else {
                   alert(res.error);
             }
@@ -270,7 +274,6 @@ export default function Admin() {
     .then(
       (res) => {
         if (status === 200) {
-          
         } else {
           alert(res.error)
         }      
@@ -283,7 +286,7 @@ export default function Admin() {
   function handleChange(e) {
     setFile(e.target.files[0]);
   }
-
+  
     
     return (
         <>  
@@ -326,8 +329,8 @@ export default function Admin() {
                   <input className="form-control" id="tuotenimi" type="text" value={newProductName} onChange={e => setNewProductName(e.target.value)}/>
                   <label htmlFor="hinta">Hinta: </label>
                   <input className="form-control" id="hinta" type="number" value={newProductPrice} onChange={e => setNewProductPrice(e.target.value)}/>
-                  <label htmlFor="kuva">Kuvan nimi: </label>
-                  <input className="form-control" id="kuva" type="text" value={newProductPicture} onChange={e => setNewProductPicture(e.target.value)}/>
+                 {/*  <label htmlFor="kuva">Kuvan nimi: </label>
+                  <input className="form-control" id="kuva" type="text" value={newProductPicture} onChange={e => setNewProductPicture(e.target.value)} hidden/> */}
                   <label htmlFor="kuvaus">Tuotekuvaus: </label>
                   <textarea className="form-control" id="kuvaus" type="text" maxLength="255" value={newProductDescription} onChange={e => setNewProductDescription(e.target.value)}/>
                   <button className="btn btn-primary mt-2">Lisää</button>
