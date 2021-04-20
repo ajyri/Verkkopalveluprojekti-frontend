@@ -61,7 +61,7 @@ export default function Products ({ trnro, addToCart }) {
           {products.map(item => (
           // Render item here..
 
-              <div className='col-lg-3 col-md-4 col-sm-6 card-group pb-3'>
+              <div className='col-xl-3 col-lg-4 col-md-6 col-sm-12 card-group pb-3'>
                 <div key={item.tuotenro} className='card'>
                   <img
                     src={URL + 'img/' + item.kuva}
@@ -70,8 +70,8 @@ export default function Products ({ trnro, addToCart }) {
                   />
                   <div className='card-body d-flex flex-column'>
                     <div className='card-title row'>
-                      <h5 className='col-8'>{item.tuotenimi} </h5>{' '}
-                      <h5 className='col-4 card-text-right'> {Number(item.hinta).toFixed(2)} €</h5>
+                      <h5 className='col-lg-8 col-md-7 col-sm-6 col-9'>{item.tuotenimi} </h5>{' '}
+                      <h5 className='col-lg-4 col-md-5 col-sm-6 col-3 card-text-right'> {Number(item.hinta).toFixed(2)} €</h5>
                     </div>
                     <p className='card-text'>{item.kuvaus}</p>
 
