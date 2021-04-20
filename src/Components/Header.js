@@ -60,7 +60,7 @@ const filteredproducts = filterProducts(productList, query);
                     {/* <div className="col-12">
                         <Search />
                         <ul className="hidden">
-                        {filteredproducts.map(product => (
+                        {filteredproducts.map((product) => (
                             <li key={product.tuotenro}>{product.tuotenimi}</li>
                             ))}
                         </ul>
