@@ -1,17 +1,52 @@
-import React from 'react'
+import React, {useState} from 'react';
+
 
 export default function Footer() {
+
+  const [address, setAddress] = useState(''); 
+  const URL = 'http://localhost/verkkopalvelu/';
+  
+  function save(e) {
+    e.preventDefault();
+    let status = 0;
+    fetch(URL + 'newsletter.php', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        sahkpost: address
+      })
+    })
+    .then(res=> {
+      status = parseInt(res.status);
+      return res.json();
+    })
+    .then(
+      (res) => {
+        if (status === 200) {
+          setAddress('');
+        } else {
+          alert(res.error);
+        }
+      }, (error) => {
+        alert(error);
+      }
+    )
+  } 
+
     return (
         <>
         <footer className="row">
         <div className="container text-center p-4 pb-0">
         <p className="pt-2 footer_info"><strong>Haluatko tietoa tarjouksista ja kamppanjoista?</strong></p>
-    <form action="">
+    <form action="" onSubmit={save}>
      
       <div className="row subscribe">
         <div className="col-12">
           <div className="form-outline mb-4">
-            <input type="email" id="subscribe" className="form-control" placeholder="Sähkopostiosoite" />
+            <input type="email" id="subscribe" className="form-control" placeholder="Sähköpostiosoite" value={address} onChange={e =>setAddress(e.target.value)} />
           </div>
         </div>
         <div className="col-12">
@@ -19,8 +54,8 @@ export default function Footer() {
             Tilaa uutiskirje
           </button>
         </div>
-        </div>
-        </form>
+      </div>
+    </form>
         </div>
       <div className="container p-4">
       <div className="row">
