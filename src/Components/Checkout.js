@@ -48,8 +48,8 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
                 <div className="row">
                     <div className="col-9"></div>
                     <div className="col-2 text-center">
-                            <p className="p-0 m-0">Tuotteet yhteensä:</p>
-                            <p className=" p-0 m-0 text-center">{cart.forEach(item => {
+                            <p className="p-0 mb-0">Tuotteet yhteensä:</p>
+                            <p className=" p-0 mb-3 text-center">{cart.forEach(item => {
                                     total = total + (item.hinta * item.qty) 
                                 })}
                                 {total.toFixed(2)}€</p>
