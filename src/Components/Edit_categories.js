@@ -11,10 +11,16 @@ export default function Edit_categories() {
     const [newProductName, setNewProductName] = useState('');
     const [newProductDescription, setNewProductDescription] = useState('');
     const [newProductPrice, setNewProductPrice] = useState('');
-    /* const [newProductPicture, setNewProductPicture] = useState('kahvi_place.jpg'); */
-    
-    
     const [categoryUpdated, setCategoryUpdated] = useState('');
+    const [editedProduct, setEditedProduct] = useState(null);
+    const [nameUpdated, setNameUpdated] = useState('');
+    const [priceUpdated, setPriceUpdated] = useState('');
+    const [descriptionUpdated, setDescriptionUpdated] = useState('');
+    const [fileUpdated, setFileUpdated] = useState(null);
+    const [trnroUpdated, setTrnroUpdated] = useState('');
+
+    
+    
     
     useEffect(() => {
     
@@ -287,10 +293,14 @@ export default function Edit_categories() {
     setFile(e.target.files[0]);
   }
   
+  function updateProduct(product) {
+    setEditedProduct(product);
+  }
+
     return (
         <>
           <div className="row border-bottom border-start border-end border-dark pb-2" id="listing">
-                <div className="col-lg-3">
+                <div className="col-lg-4">
                     <div className="col-auto mt-2">
                       <h5 className="mt-2">Lisää uusi tuoteryhmä</h5>   
                       <input id="uusi_tr" type="text" className="form-control" aria-describedby="uusiTrnimi" placeholder="Syötä uuden tuoteryhmän nimi" value={newCategory} onChange={e => setNewCategory(e.target.value)}/>
@@ -308,7 +318,7 @@ export default function Edit_categories() {
                     ))}
                     
                 </div>
-                <div className="col-lg-3 mt-2">
+                <div className="col-lg-4 mt-2">
                   <h5>Lisää uusi tuote: </h5>
                   <form action="submit" onSubmit={saveProducts}>
                   <label htmlFor="img">Tuotekuva: </label>
@@ -338,13 +348,36 @@ export default function Edit_categories() {
                   
                   <ul className="mt-3">
                     {products.map(product => (
-                        <li className="">{product.tuotenimi} <button onClick={() => deleteProduct(product.tuotenro)} className="btn btn-primary mt-2">Poista</button>
+                        <li className="">{product.tuotenimi} 
+                          <button onClick={() => deleteProduct(product.tuotenro)} className="btn btn-primary m-2">Poista</button>
+                          <button onClick={() => updateProduct(product)} className="btn btn-primary m-2">Muokkaa</button>
                         </li>  
                     ))}
                   </ul>
                 </div>
-                        
-                              
+                {editedProduct != null ? ( 
+                    <>
+                    <div className="col-lg-4 mt-2">
+                          <h5>Muokkaa tuotetta: </h5>
+                      <form>
+                        <label htmlFor="tuotenimi">Tuotenimi: </label>
+                        <input className="form-control" id="tuotenimi" type="text" value={editedProduct.tuotenimi} onChange={e => setNameUpdated(e.target.value)}/>
+                        <label htmlFor="hinta">Hinta: </label>
+                        <input className="form-control" id="hinta" type="number" value={editedProduct.hinta} onChange={e => setPriceUpdated(e.target.value)}/>
+                        <label htmlFor="kuvaus">Tuotekuvaus: </label>
+                        <textarea className="form-control" id="kuvaus" type="text" maxLength="255" value={editedProduct.kuvaus} onChange={e => setDescriptionUpdated(e.target.value)}/>
+                        <label htmlFor="kuva">Tuoteryhmä: </label>
+                        <input className="form-control" id="kuva" type="number" value={editedProduct.trnro} onChange={e => setTrnroUpdated(e.target.value)}/>
+                        <input className="form-control" id="kuva" type="text" value={editedProduct.kuva} hidden/>
+                        <button className="btn btn-primary mt-2">Tallenna muutos</button>
+                      </form>
+                    </div>
+                    </>
+
+                      ) : (
+                        <></>
+                      )  
+                      }             
             </div>  
         </>
     )
