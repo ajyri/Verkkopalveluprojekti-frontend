@@ -123,4 +123,4 @@ const filteredproducts = filterProducts(productList, query);
         </>
     )
 }
-
+}
