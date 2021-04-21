@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import Products from './Products.js';
 
-export default function Header({ products, cart, addToCart, removeFromCart, trnro}) {
+export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart}) {
    
 const filterProducts = (productList, query) => {
     if (!query) {
@@ -77,23 +77,25 @@ const filteredproducts = filterProducts(productList, query);
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(2)}€
                                     <div>
-                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
+                                        < span type="button" className="ms-4 ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect me-3" onClick={() => addToCart(item)}>+</span>
+                                        <span type="button" className="noselect" onClick={() => emptyRow(item)}>X</span>
                                     </div>
                                 </li>
                             ))}
                         </ul>
                         <div className="text-center pt-1">
-                        <p>Summa: {cart.forEach(item => {
+                        <p className="mb-0 pb-0">Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
                             {total.toFixed(2)}€</p>
+                        <p type="button" className="noselect mb-2 empty" onClick={() => emptyCart()}>Tyhjennä ostoskori</p>
                         </div>
+                        
                         <div className="text-center">
                         <Link to={{
                                 pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
                                 
                         </Link>
-                        
                         </div>
                         
                     </div>
