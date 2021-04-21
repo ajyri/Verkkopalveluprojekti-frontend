@@ -64,14 +64,14 @@ function save(e) {
         <>
 <form onSubmit={save}>
 <div className="row g-3 mt-1">
-  <div className="col-4">
+  <div className="col-lg-4 col-md-4 col-12">
     <input type="text" className="form-control pt-1" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} ></input>
     <input type="text" className="form-control pt-1 mt-3" placeholder="Puhelinnumero" value={phone} onChange={e => setPhone(e.target.value)}></input>
   </div>
-  <div className="col-4">
+  <div className="col-lg-4 col-md-4 col-6">
   <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" placeholder="Lisätietoja tilauksesta" value={details} onChange={e => setDetails(e.target.value)}></textarea>
   </div>
-  <div className="col-4 text-center">
+  <div className="col-lg-4 col-md-4 col-6 text-center">
       <h4 className="">Yhteenveto tilauksesta:</h4>
       {cart.map(item => (
                     <div>
@@ -86,17 +86,16 @@ function save(e) {
   </div>
   </div>
   <div className="row">
-                <div className="col-1 py-1">
+                <div className="col-4 py-1">
                 <Link to={{
-                                pathname:'/checkout'}} > <button className="btn btn-primary">Edellinen</button>
-                                
+                                pathname:'/checkout'}} >
+                
+                <button className="btn btn-primary">Edellinen</button>
+                
                 </Link>
                 </div>
-                <div className="col-8"></div>
-                <div className="col-1">
-
-                </div>
-                <div className="col-2 text-end  py-1">
+                <div className="col-3"></div>
+                <div className="col-5 text-center py-1">
                 <button className="btn btn-primary" type="submit">Tilaa tuotteet</button>
                 </div>
             </div>
