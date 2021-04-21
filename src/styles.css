@@ -187,3 +187,7 @@ nav{
   border-radius: 10px;
   justify-content: center;
 }
+
+.empty{
+  font-size: 13px;
+}
