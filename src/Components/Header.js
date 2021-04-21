@@ -67,22 +67,22 @@ const filteredproducts = filterProducts(productList, query);
                     </div> */}
                 </nav>
                 
-                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
+                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1 dropend " onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
                     </a>
-                    <div className="dropdown-menu drop-down-light-brown " id="cartItems">
+                    <div className="dropdown-menu drop-down-light-brown p-3" id="cartItems">
                         <ul className="text-center">
                             {cart.map(item => (
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(2)}€
-                                    <div>
+                                    <div className="fw-bold">
                                         < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                                     </div>
                                 </li>
                             ))}
                         </ul>
-                        <div className="text-center pt-1">
+                        <div className="text-center pt-1 fw-bold">
                         <p>Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
@@ -90,7 +90,7 @@ const filteredproducts = filterProducts(productList, query);
                         </div>
                         <div className="text-center">
                         <Link to={{
-                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
+                                pathname:'/checkout'}} > <button className="btn btn-primary shadow-none">Kassalle </button>
                                 
                         </Link>
                         

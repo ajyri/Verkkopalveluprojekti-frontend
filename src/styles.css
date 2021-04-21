@@ -91,6 +91,11 @@ nav{
   border: 1px solid black;
   color: white;
 }
+.btn:hover, .btn:active, .btn:focus {
+  background-color:#663300;
+  color: white;
+}
+
 .card {
   background-color: #cbac88;
   border: 1px solid black;
@@ -182,5 +187,3 @@ nav{
   border-radius: 10px;
   justify-content: center;
 }
-
-
