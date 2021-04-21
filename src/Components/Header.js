@@ -5,8 +5,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import Products from './Products.js';
 
-export default function Header({ products, cart, addToCart, removeFromCart, trnro, admin}) {
-export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart}) {
+export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart, admin}) {
    
 const filterProducts = (productList, query) => {
     if (!query) {
@@ -123,4 +122,4 @@ const filteredproducts = filterProducts(productList, query);
         </>
     )
 }
-}
+

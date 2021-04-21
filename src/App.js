@@ -108,14 +108,15 @@ function App() {
 
   return (
     <div className="container">
-      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} admin={admin} />
       <Header cart={cart} 
       addToCart={addToCart} 
       removeFromCart={removeFromCart}
       emptyRow={emptyRow}
       emptyCart={emptyCart}
       products={products} 
-      trnro={trnro} />
+      trnro={trnro}
+      admin={admin}
+      />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
