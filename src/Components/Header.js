@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Search from './Search.js';
 import Products from './Products.js';
 
-export default function Header({ products, cart, addToCart, removeFromCart, trnro}) {
+export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart, admin}) {
    
 const filterProducts = (productList, query) => {
     if (!query) {
@@ -28,13 +28,30 @@ const filteredproducts = filterProducts(productList, query);
         <>  
             
             <header className="row">
-                {/* <div className="col-12 ">
-                    <div className="d-flex justify-content-end p-3">
-                        <Link to={{
-                            pathname:'/login'}} > <button className="btn btn-primary">Kirjaudu </button>    
-                        </Link>
-                    </div>
-                </div> */}
+
+                {admin != null ? ( 
+                    <>
+                      <div className="col-12 ">
+                            <div className="d-flex justify-content-end p-3">
+                                <div className="m-1">
+                                    <Link to={{
+                                        pathname:'/admin'}} > <button className="btn btn-primary">Siirry ylläpitosivulle</button>    
+                                    </Link>
+                                </div>
+                                <div className="m-1">
+                                    <Link to={{
+                                        pathname:'/logout'}} > <button className="btn btn-primary">Kirjaudu Ulos</button>    
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
+                    </>
+
+                      ) : (
+                        <></>
+                      )  
+                      } 
+                
                 <div className="col-lg-3 col-md-7 text-start pt-2 mb-1">
                     <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
@@ -67,33 +84,34 @@ const filteredproducts = filterProducts(productList, query);
                     </div> */}
                 </nav>
                 
-                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
+                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1 dropend " onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
                     </a>
-                    <div className="dropdown-menu drop-down-light-brown " id="cartItems">
+                    <div className="dropdown-menu drop-down-light-brown p-3" id="cartItems">
                         <ul className="text-center">
                             {cart.map(item => (
                                 <li className="border-bottom border-dark" key={item.tuotenro}>
                                     {item.tuotenimi} {(item.hinta * item.qty).toFixed(2)}€
-                                    <div>
-                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
+                                    <div className="fw-bold">
+                                        < span type="button" className="ps-2 noselect" onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>                                        <span type="button" className="noselect" onClick={() => emptyRow(item)}>X</span>
                                     </div>
                                 </li>
                             ))}
                         </ul>
-                        <div className="text-center pt-1">
-                        <p>Summa: {cart.forEach(item => {
+                        <div className="text-center pt-1 fw-bold">
+                        <p className="mb-0">Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
                             {total.toFixed(2)}€</p>
+                        <p type="button" className="noselect mb-2 empty" onClick={() => emptyCart()}>Tyhjennä ostoskori</p>
                         </div>
+                        
                         <div className="text-center">
                         <Link to={{
-                                pathname:'/checkout'}} > <button className="btn btn-primary">Kassalle </button>
+                                pathname:'/checkout'}} > <button className="btn btn-primary shadow-none">Kassalle </button>
                                 
                         </Link>
-                        
                         </div>
                         
                     </div>

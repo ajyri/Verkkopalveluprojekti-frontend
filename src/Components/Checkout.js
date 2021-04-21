@@ -8,8 +8,8 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
     if(cart.length === 0){
         return (
             <>
-                <div className="row border-bottom border-dark mt-1 text-center">
-                    <p>Ostoskorisi on tyhjä</p>
+                <div className="row border-dark mt-3 mb-3 text-center">
+                    <h2>Ostoskorisi on tyhjä</h2>
                 </div>
             </>
         )
