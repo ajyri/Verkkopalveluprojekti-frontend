@@ -76,7 +76,7 @@ export default function Products ({ trnro, addToCart }) {
                     <p className='card-text'>{item.kuvaus}</p>
 
                     <button
-                      className='btn mt-auto'
+                      className='btn mt-auto shadow-none'
                       onClick={() => addToCart(item)}
                     >
                       Lisää koriin
