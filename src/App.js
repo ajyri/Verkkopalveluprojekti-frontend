@@ -9,17 +9,18 @@ import Checkout from './Components/Checkout.js';
 import Details from './Components/Details.js';
 import Login from './Components/Login.js';
 import Admin from './Components/Admin.js';
-import Confirm from './Components/Confirm.js'
+import Confirm from './Components/Confirm.js';
+import Logout from './Components/Logout';
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
   
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
-  const [trnro, setTrnro] = useState(1);
+  const [trnro, setTrnro] = useState(null);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
-
+  console.log(admin);
   let location = useLocation();
 
   useEffect(() => {
@@ -96,7 +97,7 @@ function App() {
 
   return (
     <div className="container">
-      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} />
+      <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} admin={admin} />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
@@ -138,6 +139,12 @@ function App() {
         }
         />
         <Route path="/confirm" render={() => <Confirm/>
+        }
+        />
+        <Route path="/logout" render={() => <Logout
+        setAdmin={setAdmin}
+        URL={URL}
+        />
         }
         />
       </Switch>
