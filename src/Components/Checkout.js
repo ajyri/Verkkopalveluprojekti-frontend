@@ -17,44 +17,41 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
         return (
             <>
                 <div className="row border-bottom border-dark mt-1">
-                    <div className="col-2 align-text-bottom ">
+                    <div className="col-lg-2 col-md-2 col-2 text-center">
                         <p className="">Tuote:</p>
                     </div>
-                    <div className="col-2"></div>
-                    <div className="col-2">
+                    <div className="col-md-1 col-3 "></div>
+                    <div className="col-md-3 col-3 text-center ">
                         <p>Hinta:</p>
                     </div>
-                    <div className="col-2">
+                    <div className="col-md-3 col-2 ">
                         <p>Määrä:</p>
                     </div>
                 </div>
                 {cart.map(item => (
-                    <div className="row my-1 border-bottom border-dark">
-                        <div className="col-1 thumbnail mb-1">
+                    <div className="row my-2 border-bottom border-dark">
+                        <figure className="col-lg-2 col-md-2 col-sm-2 col-4 thumbnail mb-1 text-center">
                             <img className="img-fluid" src={URL + 'img/' + item.kuva} alt=""/>
-                        </div>
-                        <div className="col-3">
-                            <p>{item.tuotenimi}</p>
-                        </div>
-                        <div className="col-2">
+                        <figcaption className="px-0 mx-0">{item.tuotenimi}</figcaption>
+                        </figure>
+                        <div className="col-1"></div>
+                        <div className="col-3 col-md-3 text-center">
                             <p>{(item.hinta * item.qty).toFixed(2)}€</p>
                         </div>
-                        <div className="col-2">
+                        <div className="col-lg-3 col-md-4 col-3 ">
                             < span type="button" className="ps-2 noselect " onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
-                        </div>
-    
+                        </div>  
                     </div>
                 ))}
                 <div className="row">
-                    <div className="col-9"></div>
-                    <div className="col-2 text-center">
-                            <p className="p-0 m-0">Tuotteet yhteensä:</p>
-                            <p className=" p-0 m-0 text-center">{cart.forEach(item => {
+                    <div className="col-lg-2 col-md-3 col-sm-4 col-6">
+                            <p className="p-0 m-0 text-center">Tuotteet yhteensä:</p>
+                            <p className=" p-0 mb-3 text-center">{cart.forEach(item => {
                                     total = total + (item.hinta * item.qty) 
                                 })}
                                 {total.toFixed(2)}€</p>
                     </div>
-                    <div className="col-1 text-end py-1">
+                    <div className="col-lg-10 col-md-9 col-6 text-end py-1">
                     <Link to={{
                                     pathname:'/details'}} > <button className="btn btn-primary">Seuraava</button>
                                     
