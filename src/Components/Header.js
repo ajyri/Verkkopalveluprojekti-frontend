@@ -48,7 +48,7 @@ const filteredproducts = filterProducts(productList, query);
                             <li className="nav-item">
                                 <Link className="nav-link active" aria-current="page" to={{ pathname: '/' }} >Etusivu</Link>
                             </li>
-                            <li className="nav-item dropdown">
+                            <li className="nav-item dropdown ">
                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
                                 </a>
@@ -57,21 +57,21 @@ const filteredproducts = filterProducts(productList, query);
                         </ul>
                         
                     </div>
-                    <div className="col-12">
+                    {/* <div className="col-12">
                         <Search />
                         <ul className="hidden">
                         {filteredproducts.map((product) => (
                             <li key={product.tuotenro}>{product.tuotenimi}</li>
                             ))}
                         </ul>
-                    </div>
+                    </div> */}
                 </nav>
                 
                 <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1" onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
                     </a>
-                    <div className="dropdown-menu" id="cartItems">
+                    <div className="dropdown-menu drop-down-light-brown " id="cartItems">
                         <ul className="text-center">
                             {cart.map(item => (
                                 <li className="border-bottom border-dark" key={item.tuotenro}>

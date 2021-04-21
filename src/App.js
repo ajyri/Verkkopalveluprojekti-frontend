@@ -13,11 +13,12 @@ import Confirm from './Components/Confirm.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
-
+  
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
   const [products, setProducts] = useState([])
+  const [admin, setAdmin] = useState(null);
 
   let location = useLocation();
 
@@ -126,10 +127,14 @@ function App() {
         />}
         />
         <Route path="/login" render={() => <Login
+        setAdmin={setAdmin}
+        URL={URL}
         />
         }
         />
-        <Route path="/admin" render={() => <Admin/>
+        <Route path="/admin" render={() => <Admin
+        admin={admin}
+        />
         }
         />
         <Route path="/confirm" render={() => <Confirm/>

@@ -29,7 +29,7 @@ useEffect(() => {
 
     return (
         <>
-            <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+            <ul className="dropdown-menu drop-down-light-brown" aria-labelledby="navbarDropdown">
                 {category.map(category => (
                     <li key={category.trnro}>
                         <Link
