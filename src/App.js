@@ -95,9 +95,27 @@ function App() {
     setQty([])
   }
 
+  function emptyRow(item){
+    let index = cart.indexOf(item)
+    const newCart = [...cart]
+    newCart.splice(index,1)
+    setCart(newCart)
+    index = qty.indexOf(item)
+    const newQty = [...qty]
+    newQty.splice(index,1)
+    setQty(newQty)
+  }
+
   return (
     <div className="container">
       <Header cart={cart} addToCart={addToCart} removeFromCart={removeFromCart} products={products} trnro={trnro} admin={admin} />
+      <Header cart={cart} 
+      addToCart={addToCart} 
+      removeFromCart={removeFromCart}
+      emptyRow={emptyRow}
+      emptyCart={emptyCart}
+      products={products} 
+      trnro={trnro} />
       <Switch>
         <Route path="/" render={() => <Home
           addToCart={addToCart} />}
