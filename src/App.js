@@ -16,7 +16,7 @@ function App() {
   
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
-  const [trnro, setTrnro] = useState(null);
+  const [trnro, setTrnro] = useState(1);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
 
