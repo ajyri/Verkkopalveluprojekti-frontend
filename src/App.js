@@ -19,7 +19,6 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
-  const [tilausnro, setTilausnro] = useState(null);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
   console.log(admin);
@@ -28,12 +27,6 @@ function App() {
   useEffect(() => {
     if (location.state !== undefined) {
       setTrnro(location.state.trnro)
-    }
-  }, [location.state])
-
-  useEffect(() => {
-    if (location.state !== undefined) {
-      setTilausnro(location.state.tilausnro)
     }
   }, [location.state])
 
@@ -101,6 +94,7 @@ function App() {
   function emptyCart(){
     setCart([])
     setQty([])
+    localStorage.setItem('cart', JSON.stringify([]));
   }
 
   function emptyRow(item){
@@ -112,6 +106,7 @@ function App() {
     const newQty = [...qty]
     newQty.splice(index,1)
     setQty(newQty)
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   return (
@@ -174,8 +169,7 @@ function App() {
         />
         }
         />
-        <Route path="/order" render={() => <Order
-        tilausnro={tilausnro}
+        <Route path="/order/:tilausnro" render={() => <Order
         />}
         />
       </Switch>

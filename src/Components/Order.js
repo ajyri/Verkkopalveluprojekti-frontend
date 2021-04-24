@@ -1,10 +1,10 @@
 import React from 'react'
 import {useState ,useEffect} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 const URL = 'http://localhost/verkkopalvelu/'
 
-export default function Order({tilausnro}) {
-    
+export default function Order() {
+    const {tilausnro} = useParams();
     const [order, setOrder] = useState([])
     useEffect(() => {
         let status = 0
@@ -29,9 +29,9 @@ export default function Order({tilausnro}) {
               alert(error)
             }
           )
-      }, [tilausnro])
+      },[])
     
-      if(order.length == 0){
+      if(order.length === 0){
         return(
           <p>Loading...</p>
         )

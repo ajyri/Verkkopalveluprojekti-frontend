@@ -42,7 +42,6 @@ function save(e) {
         })
         .then(result => {
             status = parseInt(result.status);
-            console.log(result)
             return result;
         })
         .then(result => {
@@ -52,10 +51,9 @@ function save(e) {
             }
             else{
                 alert(result.error);
-                console.log(result)
             }
-        },
-        error => console.log(error)
+        },error => alert(error) 
+        
         )
     }
 }

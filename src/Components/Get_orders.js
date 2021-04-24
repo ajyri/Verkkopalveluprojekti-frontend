@@ -38,10 +38,7 @@ export default function Get_orders() {
                 {orders.map(order => (
                       <li>
                        <Link to={{
-                                pathname:'/order',
-                                state: {
-                                  tilausnro: order.tilausnro
-                                  }
+                                pathname:'/order/'+order.tilausnro
                                 }}> 
                        <a>{order.tilausnro}. {order.asnimi}</a>
                         </Link>
