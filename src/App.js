@@ -11,6 +11,7 @@ import Login from './Components/Login.js';
 import Admin from './Components/Admin.js';
 import Confirm from './Components/Confirm.js';
 import Logout from './Components/Logout';
+import Order from './Components/Order.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
+  const [tilausnro, setTilausnro] = useState(null);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
   console.log(admin);
@@ -26,6 +28,12 @@ function App() {
   useEffect(() => {
     if (location.state !== undefined) {
       setTrnro(location.state.trnro)
+    }
+  }, [location.state])
+
+  useEffect(() => {
+    if (location.state !== undefined) {
+      setTilausnro(location.state.tilausnro)
     }
   }, [location.state])
 
@@ -165,6 +173,10 @@ function App() {
         URL={URL}
         />
         }
+        />
+        <Route path="/order" render={() => <Order
+        tilausnro={tilausnro}
+        />}
         />
       </Switch>
       <Footer />

@@ -191,3 +191,10 @@ nav{
 .empty{
   font-size: 13px;
 }
+
+.link{
+  color: black;
+}
+.link:hover{
+  color: white;
+}

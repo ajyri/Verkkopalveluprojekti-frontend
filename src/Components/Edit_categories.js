@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import Get_orders from './Get_orders.js'
 const URL = 'http://localhost/verkkopalvelu/';
 
 export default function Edit_categories() {
@@ -507,6 +507,9 @@ export default function Edit_categories() {
           <></>
         )
         }
+        <div className="col-lg-4 mt-2">
+          <Get_orders/>
+        </div>
       </div>
     </>
   )
