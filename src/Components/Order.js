@@ -44,6 +44,7 @@ export default function Order() {
                 <p>Asiakasnimi: {order[0].asnimi}</p>  
                 <p>Puhelinnumero: {order[0].aspuh}</p>
                 <p>Tilauspäivämäärä: {order[0].tilauspvm}</p>
+                <p>Lisätiedot: {order[0].lisatiedot}</p>
                 <h4>Tuotteet:</h4>
                 <ul>
                 {order.map(order => (
