@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Cart from './Cart.js'
 import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
-import Search from './Search.js';
-import Products from './Products.js';
+
 
 export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart, admin}) {
    
@@ -18,11 +17,6 @@ const filterProducts = (productList, query) => {
 };
 
 let total = 0    
-const search = window.location;
-const query = new URLSearchParams(search).get('s');
-const productList = products
-
-const filteredproducts = filterProducts(productList, query);
 
     return (
         <>  
@@ -74,14 +68,6 @@ const filteredproducts = filterProducts(productList, query);
                         </ul>
                         
                     </div>
-                    {/* <div className="col-12">
-                        <Search />
-                        <ul className="hidden">
-                        {filteredproducts.map((product) => (
-                            <li key={product.tuotenro}>{product.tuotenimi}</li>
-                            ))}
-                        </ul>
-                    </div> */}
                 </nav>
                 
                 <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1 dropend " onClick={e => e.stopPropagation()}>
