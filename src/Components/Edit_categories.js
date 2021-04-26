@@ -391,16 +391,16 @@ export default function Edit_categories() {
           <div className="col-auto mt-2">
             <h5 className="mt-2">Lisää uusi tuoteryhmä</h5>
             <input id="uusi_tr" type="text" className="form-control" aria-describedby="uusiTrnimi" placeholder="Syötä uuden tuoteryhmän nimi" value={newCategory} onChange={e => setNewCategory(e.target.value)} />
-            <span className="p-2"><button onClick={saveCategory} className="btn btn-primary mt-2">Tallenna</button></span>
+            <span className="p-2"><button onClick={saveCategory} className="btn shadow-none mt-2">Tallenna</button></span>
           </div>
           <h5 className="mt-2">Tuoteryhmät:</h5>
           {categories.map(category => (
 
             <div key={category.trnro} className="col-auto mt-2">
               <input defaultValue={category.trnimi} id="trnimi" type="text" key={category.trnro} className="form-control" aria-describedby="inputTrnimi" value={categories.trnimi} onChange={e => setCategoryUpdated(e.target.value)} />
-              <span className="p-2"><button type="submit" onClick={() => UpdateCategory(category.trnro)} className="btn btn-primary mt-2">Tallenna</button></span>
-              <span className="p-2"><button onClick={() => deleteCategory(category.trnro)} className="btn btn-primary mt-2 ">Poista</button></span>
-              <span className="p-2"><button onClick={() => Products(category.trnro)} className="btn btn-primary mt-2 ">Tuotteet</button></span>
+              <span className="p-2"><button type="submit" onClick={() => UpdateCategory(category.trnro)} className="btn shadow-none mt-2">Tallenna</button></span>
+              <span className="p-2"><button onClick={() => deleteCategory(category.trnro)} className="btn shadow-none mt-2 ">Poista</button></span>
+              <span className="p-2"><button onClick={() => Products(category.trnro)} className="btn shadow-none mt-2 ">Tuotteet</button></span>
             </div>
           ))}
 
@@ -437,15 +437,15 @@ export default function Edit_categories() {
                     ))}
                   </select>
                 </div>
-            <button className="btn btn-primary m-2">Lisää</button>
+            <button className="btn shadow-none m-2">Lisää</button>
 
           </form>
 
           <ul className="mt-3">
             {products.map(product => (
               <li className="">{product.tuotenimi}
-                <button onClick={() => deleteProduct(product.tuotenro)} className="btn btn-primary m-2">Poista</button>
-                <button onClick={() => editProduct(product)} className="btn btn-primary m-2">Muokkaa</button>
+                <button onClick={() => deleteProduct(product.tuotenro)} className="btn shadow-none m-2">Poista</button>
+                <button onClick={() => editProduct(product)} className="btn shadow-none m-2">Muokkaa</button>
               </li>
             ))}
           </ul>
@@ -470,14 +470,14 @@ export default function Edit_categories() {
                   </select>
                 </div>
 
-              <button onClick={() => updateProduct(editedProduct.tuotenro)} className="btn btn-primary m-1">Tallenna</button>
-              <button onClick={() => setEditedProduct(null)} className="btn btn-primary m-1">Sulje muokkaamatta</button>
-              <button onClick={() => editImage()} className="btn btn-primary m-1">Vaihda kuvaa</button>
+              <button onClick={() => updateProduct(editedProduct.tuotenro)} className="btn shadow-none m-1">Tallenna</button>
+              <button onClick={() => setEditedProduct(null)} className="btn shadow-none m-1">Sulje muokkaamatta</button>
+              <button onClick={() => editImage()} className="btn shadow-none m-1">Vaihda kuvaa</button>
               {editedImage != false ? (
                 <>
                   <input className="form-control" id="img" type="file" onChange={handleChange_2} />
-                  <button onClick={() => setEditedImage(false)} className="btn btn-primary m-1">Sulje muokkaamatta</button>
-                  <button onClick={e => updateImage(editedProduct.tuotenro, e)} className="btn btn-primary m-1">Tallenna kuva</button>
+                  <button onClick={() => setEditedImage(false)} className="btn shadow-none m-1">Sulje muokkaamatta</button>
+                  <button onClick={e => updateImage(editedProduct.tuotenro, e)} className="btn shadow-none m-1">Tallenna kuva</button>
                   {file != null ? (
                     <>
                       <label htmlFor="img">Tuotekuva: </label>

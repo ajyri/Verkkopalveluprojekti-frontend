@@ -29,12 +29,12 @@ let total = 0
                             <div className="d-flex justify-content-end p-3">
                                 <div className="m-1">
                                     <Link to={{
-                                        pathname:'/admin'}} > <button className="btn btn-primary">Siirry ylläpitosivulle</button>    
+                                        pathname:'/admin'}} > <button className="btn shadow-none">Siirry ylläpitosivulle</button>    
                                     </Link>
                                 </div>
                                 <div className="m-1">
                                     <Link to={{
-                                        pathname:'/logout'}} > <button className="btn btn-primary">Kirjaudu Ulos</button>    
+                                        pathname:'/logout'}} > <button className="btn shadow-none">Kirjaudu Ulos</button>    
                                     </Link>
                                 </div>
                             </div>

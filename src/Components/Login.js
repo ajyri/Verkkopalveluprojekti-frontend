@@ -43,7 +43,7 @@ export default function Login({setAdmin,URL}) {
                             <input name="salasana" type="password" className="form-control" id="salasana" value={password} onChange={e =>setPassword(e.target.value)} />
                         </div>
                         <div className="mt-3 col auto">
-                            <button type="submit" className="btn mb-2">Kirjaudu</button>
+                            <button type="submit" className="btn shadow-none mb-2">Kirjaudu</button>
                         </div> 
                     </div>
                  </div>
