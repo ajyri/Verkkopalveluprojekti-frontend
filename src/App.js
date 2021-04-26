@@ -119,6 +119,7 @@ function App() {
       products={products} 
       trnro={trnro}
       admin={admin}
+      URL={URL}
       />
       <Switch>
         <Route path="/" render={() => <Home
