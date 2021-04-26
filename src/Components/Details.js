@@ -42,7 +42,6 @@ function save(e) {
         })
         .then(result => {
             status = parseInt(result.status);
-            console.log(result)
             return result;
         })
         .then(result => {
@@ -52,10 +51,9 @@ function save(e) {
             }
             else{
                 alert(result.error);
-                console.log(result)
             }
-        },
-        error => console.log(error)
+        },error => alert(error) 
+        
         )
     }
 }
@@ -95,8 +93,8 @@ function save(e) {
                 </Link>
                 </div>
                 <div className="col-3"></div>
-                <div className="col-5 text-center py-1">
-                <button className="btn btn-primary" type="submit">Tilaa tuotteet</button>
+                <div className="col-5 text-end py-1">
+                <button className="btn" type="submit">Tilaa tuotteet</button>
                 </div>
             </div>
 </form>

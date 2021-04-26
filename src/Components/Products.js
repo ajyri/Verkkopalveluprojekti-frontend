@@ -11,6 +11,7 @@ export default function Products ({ trnro, addToCart }) {
     let status = 0
     fetch(URL + 'categories.php?trnimi=' + trnro)
       .then(res => {
+        console.log(trnro)
         status = parseInt(res.status)
         return res.json()
       })
@@ -30,6 +31,7 @@ export default function Products ({ trnro, addToCart }) {
 
   useEffect(() => {
     let status = 0
+    console.log(trnro)
     fetch(URL + 'products.php?trnro=' + trnro)
       .then(res => {
         status = parseInt(res.status)
@@ -53,7 +55,7 @@ export default function Products ({ trnro, addToCart }) {
     <>
       <div
         id='listing'
-        className='row border-bottom border-start border-end border-dark pb-2'
+        className='row border-bottom border-dark pb-2'
       >
         <h2>{category.map(category => category.trnimi)}</h2>
         <div className="container-fluid">

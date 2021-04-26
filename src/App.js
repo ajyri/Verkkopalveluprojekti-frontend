@@ -11,6 +11,7 @@ import Login from './Components/Login.js';
 import Admin from './Components/Admin.js';
 import Confirm from './Components/Confirm.js';
 import Logout from './Components/Logout';
+import Order from './Components/Order.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
+  const [isLoaded, setIsLoaded] = useState (false);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
   console.log(admin);
@@ -26,6 +28,7 @@ function App() {
   useEffect(() => {
     if (location.state !== undefined) {
       setTrnro(location.state.trnro)
+      setIsLoaded(true)
     }
   }, [location.state])
 
@@ -93,6 +96,7 @@ function App() {
   function emptyCart(){
     setCart([])
     setQty([])
+    localStorage.setItem('cart', JSON.stringify([]));
   }
 
   function emptyRow(item){
@@ -104,6 +108,7 @@ function App() {
     const newQty = [...qty]
     newQty.splice(index,1)
     setQty(newQty)
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   return (
@@ -116,6 +121,7 @@ function App() {
       products={products} 
       trnro={trnro}
       admin={admin}
+      URL={URL}
       />
       <Switch>
         <Route path="/" render={() => <Home
@@ -125,6 +131,7 @@ function App() {
         <Route path="/categories" render={() => <Categories
           addToCart={addToCart}
           trnro={trnro}
+          isLoaded={isLoaded}
         />}
         />
         <Route path="/checkout" render={() => <Checkout
@@ -165,6 +172,9 @@ function App() {
         URL={URL}
         />
         }
+        />
+        <Route path="/order/:tilausnro" render={() => <Order
+        />}
         />
       </Switch>
       <Footer />
