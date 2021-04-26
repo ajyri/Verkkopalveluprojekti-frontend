@@ -25,7 +25,9 @@ export default function Logout({setAdmin, URL}) {
         <div className="row border-bottom border-start border-end border-dark pb-2" id="listing">
             <div className="centered-input">
                 <h2 className="mt-2">Olet kirjautunut ulos</h2>
-                <Link className="nav-link" to='/'>Siirry takaisin etusivulle</Link>
+                <div className="Nav-item">
+                    <Link className="nav-link, logoutlink" to='/'>Siirry takaisin etusivulle</Link>
+                </div>
             </div>
         </div>
     )
