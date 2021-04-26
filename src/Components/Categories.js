@@ -1,13 +1,23 @@
 import React from 'react';
 import Products from './Products.js';
 
-export default function Categories({trnro, addToCart}) {
-    return (
+export default function Categories({ trnro, addToCart, isLoaded }) {
 
-        <>
-            {console.log(trnro)}
-           <Products trnro={trnro} addToCart={addToCart}/> 
-        </>
+    if (isLoaded === false) {
+        return (
+            <>
+                <p>Loading...</p>
+                {console.log(isLoaded)}
+            </>
+        )
+    } else {
+        return (
 
-    )
+            <>
+                {console.log(isLoaded)}
+                <Products trnro={trnro} addToCart={addToCart} />
+            </>
+
+        )
+    }
 }

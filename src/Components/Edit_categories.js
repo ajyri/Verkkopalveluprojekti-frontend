@@ -22,11 +22,7 @@ export default function Edit_categories() {
   const [editedImage, setEditedImage] = useState(false);
 
 
-
-
   useEffect(() => {
-
-
     let status = 0;
     fetch(URL + 'dropdown.php')
       .then(res => {
