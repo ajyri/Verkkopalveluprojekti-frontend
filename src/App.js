@@ -11,6 +11,7 @@ import Login from './Components/Login.js';
 import Admin from './Components/Admin.js';
 import Confirm from './Components/Confirm.js';
 import Logout from './Components/Logout';
+import Order from './Components/Order.js'
 const URL = 'http://localhost/verkkopalvelu/'
 
 function App() {
@@ -93,6 +94,7 @@ function App() {
   function emptyCart(){
     setCart([])
     setQty([])
+    localStorage.setItem('cart', JSON.stringify([]));
   }
 
   function emptyRow(item){
@@ -104,6 +106,7 @@ function App() {
     const newQty = [...qty]
     newQty.splice(index,1)
     setQty(newQty)
+    localStorage.setItem('cart', JSON.stringify(cart));
   }
 
   return (
@@ -165,6 +168,9 @@ function App() {
         URL={URL}
         />
         }
+        />
+        <Route path="/order/:tilausnro" render={() => <Order
+        />}
         />
       </Switch>
       <Footer />

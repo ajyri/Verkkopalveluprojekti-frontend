@@ -11,6 +11,7 @@ export default function Products ({ trnro, addToCart }) {
     let status = 0
     fetch(URL + 'categories.php?trnimi=' + trnro)
       .then(res => {
+        console.log(trnro)
         status = parseInt(res.status)
         return res.json()
       })
@@ -30,6 +31,7 @@ export default function Products ({ trnro, addToCart }) {
 
   useEffect(() => {
     let status = 0
+    console.log(trnro)
     fetch(URL + 'products.php?trnro=' + trnro)
       .then(res => {
         status = parseInt(res.status)

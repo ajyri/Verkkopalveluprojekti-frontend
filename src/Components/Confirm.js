@@ -6,7 +6,7 @@ export default function Confirm() {
         <div>
             <h1>Tilauksesi on vastaanotettu!</h1>
             <Link to={{
-                                pathname:'/'}} > <a>Palaa takaisin etusivulle</a>
+                                pathname:'/'}} > <a className="link">Palaa takaisin etusivulle</a>
                                 
             </Link>
         </div>
