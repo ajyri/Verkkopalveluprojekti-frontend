@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     if (location.state !== undefined) {
       setTrnro(location.state.trnro)
-      setIsLoaded(location.state.isLoaded)
+      setIsLoaded(true)
     }
   }, [location.state])
 
