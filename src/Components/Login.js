@@ -3,8 +3,8 @@ import {useHistory} from 'react-router-dom'
 
 
 export default function Login({setAdmin,URL}) {
-    const [username, setUsername] = useState('admin');
-    const [password, setPassword] = useState('admin');
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     let history = useHistory();
 
@@ -43,7 +43,7 @@ export default function Login({setAdmin,URL}) {
                             <input name="salasana" type="password" className="form-control" id="salasana" value={password} onChange={e =>setPassword(e.target.value)} />
                         </div>
                         <div className="mt-3 col auto">
-                            <button type="submit" className="btn btn-primary mb-2">Kirjaudu</button>
+                            <button type="submit" className="btn mb-2">Kirjaudu</button>
                         </div> 
                     </div>
                  </div>
