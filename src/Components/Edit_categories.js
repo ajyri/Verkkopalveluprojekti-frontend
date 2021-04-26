@@ -75,7 +75,7 @@ export default function Edit_categories() {
     fetch(URL + 'new_category.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -135,7 +135,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_category.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -199,7 +199,7 @@ export default function Edit_categories() {
     fetch(URL + 'new_product.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -318,7 +318,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_product.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -357,7 +357,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_image.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
