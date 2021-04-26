@@ -19,6 +19,7 @@ function App() {
   const [cart, setCart] = useState([]);
   const [qty, setQty] = useState([]);
   const [trnro, setTrnro] = useState(null);
+  const [isLoaded, setIsLoaded] = useState (false);
   const [products, setProducts] = useState([])
   const [admin, setAdmin] = useState(null);
   console.log(admin);
@@ -27,6 +28,7 @@ function App() {
   useEffect(() => {
     if (location.state !== undefined) {
       setTrnro(location.state.trnro)
+      setIsLoaded(location.state.isLoaded)
     }
   }, [location.state])
 
@@ -128,6 +130,7 @@ function App() {
         <Route path="/categories" render={() => <Categories
           addToCart={addToCart}
           trnro={trnro}
+          isLoaded={isLoaded}
         />}
         />
         <Route path="/checkout" render={() => <Checkout
