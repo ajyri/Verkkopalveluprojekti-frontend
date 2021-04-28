@@ -16,36 +16,36 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
     }else{
         return (
             <>
-                <div className="row border-bottom border-dark mt-1">
-                    <div className="col-lg-2 col-md-2 col-2 text-center">
-                        <p className="">Tuote:</p>
+                <div className="row border-bottom border-dark mt-2">
+                    <div className="col-lg-2 col-md-2 col-3 text-center">
+                        <h5 className="">Tuote:</h5>
                     </div>
-                    <div className="col-md-1 col-3 "></div>
-                    <div className="col-md-3 col-3 text-center ">
-                        <p>Hinta:</p>
+
+                    <div className="col-md-3 col-3  text-center">
+                        <h5>Hinta:</h5>
                     </div>
-                    <div className="col-md-3 col-3 text-center ">
-                        <p>Hinta yhteensä:</p>
+                    <div className="col-md-3 col-3 text-center">
+                        <h5>Hinta yhteensä:</h5>
                     </div>
-                    <div className="col-md-3 col-2 ">
-                        <p>Määrä:</p>
+                    <div className="col-md-3 col-3 col-sm-2">
+                        <h5>Määrä:</h5>
                     </div>
                 </div>
                 {cart.map(item => (
                     <div className="row my-2 border-bottom border-dark">
-                        <figure className="col-lg-2 col-md-2 col-sm-2 col-4 thumbnail mb-1 text-center">
+                        <figure className="col-lg-2 col-md-2 col-sm-2 col-3 thumbnail mb-4 text-center">
                             <img className="img-fluid" src={URL + 'img/' + item.kuva} alt=""/>
                         <figcaption className="px-0 mx-0">{item.tuotenimi}</figcaption>
                         </figure>
-                        <div className="col-1"></div>
-                        <div className="col-3 col-md-3 text-center">
+
+                        <div className="col-3 col-md-3 col-3 text-center">
                             <p>{Number(item.hinta).toFixed(2)}€</p>
                         </div>
-                        <div className="col-3 col-md-3 text-center">
+                        <div className="col-3 col-md-3 col-3 text-center">
                             <p>{(item.hinta * item.qty).toFixed(2)}€</p>
                         </div>
-                        <div className="col-lg-3 col-md-4 col-3 ">
-                            < span type="button" className="ps-2 noselect " onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
+                        <div className="col-lg-3 col-md-4 col-sm-2 col-3 ">
+                            < span type="button" className="noselect " onClick={() => removeFromCart(item)}>-</span> {item.qty} <span type="button" className="noselect" onClick={() => addToCart(item)}>+</span>
                         </div>  
                     </div>
                 ))}

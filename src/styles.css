@@ -88,9 +88,9 @@ a{
 .thumbnail img{
   border-radius: 8px;
   border: solid 1px black;
-  height: 90px;
-  width: 90px;
-  padding: 0px;
+  height: 100%;
+  width: 100%;
+  padding-bottom: 0px;
 }
 
 .hidden {
