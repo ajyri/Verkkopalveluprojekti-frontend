@@ -393,11 +393,11 @@ export default function Edit_categories() {
       <div className="row border-bottom border-start border-end border-dark pb-2" id="listing">
         <div className="col-lg-4">
           <div className="col-auto mt-2">
-            <h5 className="mt-2">Lisää uusi tuoteryhmä</h5>
+            <h3 className="mt-2">Lisää uusi tuoteryhmä</h3>
             <input id="uusi_tr" type="text" className="form-control" aria-describedby="uusiTrnimi" placeholder="Syötä uuden tuoteryhmän nimi" value={newCategory} onChange={e => setNewCategory(e.target.value)} />
             <span className="p-2"><button onClick={saveCategory} className="btn shadow-none mt-2">Tallenna</button></span>
           </div>
-          <h5 className="mt-2">Tuoteryhmät:</h5>
+          <h3 className="mt-2">Tuoteryhmät:</h3>
           {categories.map(category => (
 
             <div key={category.trnro} className="col-auto mt-2">
@@ -410,7 +410,7 @@ export default function Edit_categories() {
 
         </div>
         <div className="col-lg-4 mt-2">
-          <h5>Lisää uusi tuote: </h5>
+          <h3>Lisää uusi tuote: </h3>
           <form action="submit" onSubmit={saveProducts}>
             <label htmlFor="img">Tuotekuva: </label>
             {file != null ? (
@@ -444,7 +444,7 @@ export default function Edit_categories() {
             <button className="btn shadow-none m-2">Lisää</button>
 
           </form>
-
+          <h3>Tuotteet:</h3>            
           <table className="mt-3">
             {products.map(product => (
               <tr className="">
@@ -458,7 +458,7 @@ export default function Edit_categories() {
         {editedProduct != null ? (
           <>
             <div className="col-lg-4 mt-2">
-              <h5>Muokkaa tuotetta: </h5>
+              <h3>Muokkaa tuotetta: </h3>
               <label htmlFor="tuotenimi">Tuotenimi: </label>
               <input className="form-control" id="tuotenimi" type="text" value={nameUpdated} onChange={e => setNameUpdated(e.target.value)} />
               <label htmlFor="hinta">Hinta: </label>
@@ -508,7 +508,7 @@ export default function Edit_categories() {
           <></>
         )
         }
-        <div className="col-lg-4 mt-2">
+        <div className="col-lg-5 mt-2">
           <Get_orders/>
         </div>
       </div>

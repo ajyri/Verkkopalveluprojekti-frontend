@@ -34,7 +34,7 @@ let total = 0
                                 </div>
                                 <div className="m-1">
                                     <Link to={{
-                                        pathname:'/logout'}} > <button className="btn shadow-none">Kirjaudu Ulos</button>    
+                                        pathname:'/logout'}} > <button className="btn shadow-none">Kirjaudu ulos</button>    
                                     </Link>
                                 </div>
                             </div>

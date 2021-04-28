@@ -33,11 +33,11 @@ export default function Get_orders() {
     return (
       <>
         <div>
-          <h5>Tilaukset:</h5>
+          <h3>Saapuneet tilaukset:</h3>
             <ul>
                 {orders.map(order => (
                       <li>
-                       <Link to={{
+                       <Link className="nav-link, logoutlink" to={{
                                 pathname:'/order/'+order.tilausnro
                                 }}> 
                        <a>{order.tilausnro}. {order.asnimi}</a>
