@@ -122,7 +122,11 @@ export default function Edit_categories() {
             const newListWithoutRemoved = categories.filter((item) => item.trnro !== id);
             setCategories(newListWithoutRemoved);
           } else {
+            if (res.error === 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`kahvila`.`tuote`, CONSTRAINT `tuote_ibfk_1` FOREIGN KEY (`trnro`) REFERENCES `tuoteryhma` (`trnro`))') {
+              alert('Et voi poistaa tuoteryhmää, jolla on tuotteita.')
+            } else {
             alert(res.error);
+            }
           }
         }, (error) => {
           alert(error);
@@ -441,14 +445,15 @@ export default function Edit_categories() {
 
           </form>
 
-          <ul className="mt-3">
+          <table className="mt-3">
             {products.map(product => (
-              <li className="">{product.tuotenimi}
-                <button onClick={() => deleteProduct(product.tuotenro)} className="btn shadow-none m-2">Poista</button>
-                <button onClick={() => editProduct(product)} className="btn shadow-none m-2">Muokkaa</button>
-              </li>
+              <tr className="">
+                <td>{product.tuotenimi}</td>
+                <td><button onClick={() => deleteProduct(product.tuotenro)} className="btn shadow-none m-2">Poista</button></td>
+                <td><button onClick={() => editProduct(product)} className="btn shadow-none m-2">Muokkaa</button></td>
+              </tr>
             ))}
-          </ul>
+          </table>
         </div>
         {editedProduct != null ? (
           <>
