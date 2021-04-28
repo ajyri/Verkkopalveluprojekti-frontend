@@ -24,6 +24,9 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
                     <div className="col-md-3 col-3 text-center ">
                         <p>Hinta:</p>
                     </div>
+                    <div className="col-md-3 col-3 text-center ">
+                        <p>Hinta yhteensä:</p>
+                    </div>
                     <div className="col-md-3 col-2 ">
                         <p>Määrä:</p>
                     </div>
@@ -36,6 +39,9 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
                         </figure>
                         <div className="col-1"></div>
                         <div className="col-3 col-md-3 text-center">
+                            <p>{(item.hinta * 1).toFixed(2)}€</p>
+                        </div>
+                        <div className="col-3 col-md-3 text-center">
                             <p>{(item.hinta * item.qty).toFixed(2)}€</p>
                         </div>
                         <div className="col-lg-3 col-md-4 col-3 ">
@@ -45,8 +51,8 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
                 ))}
                 <div className="row">
                     <div className="col-lg-2 col-md-3 col-sm-4 col-6">
-                            <p className="p-0 m-0 text-center">Tuotteet yhteensä:</p>
-                            <p className=" p-0 mb-3 text-center">{cart.forEach(item => {
+                            <p className="p-0 m-0 text-center fw-bold">Tuotteet yhteensä:</p>
+                            <p className=" p-0 mb-3 text-center fw-bold">{cart.forEach(item => {
                                     total = total + (item.hinta * item.qty) 
                                 })}
                                 {total.toFixed(2)}€</p>

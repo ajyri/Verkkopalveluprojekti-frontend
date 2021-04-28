@@ -73,11 +73,11 @@ function save(e) {
       <h4 className="">Yhteenveto tilauksesta:</h4>
       {cart.map(item => (
                     <div>
-                        <span>{item.tuotenimi}</span> <span>{(item.hinta * item.qty).toFixed(2)}€</span>
+                         <span>{item.qty} x </span><span>{item.tuotenimi}</span> <span> = {(item.hinta * item.qty).toFixed(2)}€</span>
                     </div>
             ))}
             <hr></hr>
-       <p>Summa: {cart.forEach(item => {
+       <p className="fw-bold">Summa: {cart.forEach(item => {
                                 total = total + (item.hinta * item.qty) 
                             })}
                             {total.toFixed(2)}€</p>
