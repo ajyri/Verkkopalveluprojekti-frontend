@@ -75,7 +75,7 @@ export default function Edit_categories() {
     fetch(URL + 'new_category.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -122,7 +122,11 @@ export default function Edit_categories() {
             const newListWithoutRemoved = categories.filter((item) => item.trnro !== id);
             setCategories(newListWithoutRemoved);
           } else {
+            if (res.error === 'SQLSTATE[23000]: Integrity constraint violation: 1451 Cannot delete or update a parent row: a foreign key constraint fails (`kahvila`.`tuote`, CONSTRAINT `tuote_ibfk_1` FOREIGN KEY (`trnro`) REFERENCES `tuoteryhma` (`trnro`))') {
+              alert('Et voi poistaa tuoteryhmää, jolla on tuotteita.')
+            } else {
             alert(res.error);
+            }
           }
         }, (error) => {
           alert(error);
@@ -135,7 +139,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_category.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -199,7 +203,7 @@ export default function Edit_categories() {
     fetch(URL + 'new_product.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -318,7 +322,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_product.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -357,7 +361,7 @@ export default function Edit_categories() {
     fetch(URL + 'update_image.php', {
       method: 'POST',
       headers: {
-        'Accept': 'application.json',
+        'Accept': 'application/json',
         'Content-type': 'application/json',
       },
       body: JSON.stringify({
@@ -389,24 +393,24 @@ export default function Edit_categories() {
       <div className="row border-bottom border-start border-end border-dark pb-2" id="listing">
         <div className="col-lg-4">
           <div className="col-auto mt-2">
-            <h5 className="mt-2">Lisää uusi tuoteryhmä</h5>
+            <h3 className="mt-2">Lisää uusi tuoteryhmä</h3>
             <input id="uusi_tr" type="text" className="form-control" aria-describedby="uusiTrnimi" placeholder="Syötä uuden tuoteryhmän nimi" value={newCategory} onChange={e => setNewCategory(e.target.value)} />
-            <span className="p-2"><button onClick={saveCategory} className="btn btn-primary mt-2">Tallenna</button></span>
+            <span className="p-2"><button onClick={saveCategory} className="btn shadow-none mt-2">Tallenna</button></span>
           </div>
-          <h5 className="mt-2">Tuoteryhmät:</h5>
+          <h3 className="mt-2">Tuoteryhmät:</h3>
           {categories.map(category => (
 
             <div key={category.trnro} className="col-auto mt-2">
               <input defaultValue={category.trnimi} id="trnimi" type="text" key={category.trnro} className="form-control" aria-describedby="inputTrnimi" value={categories.trnimi} onChange={e => setCategoryUpdated(e.target.value)} />
-              <span className="p-2"><button type="submit" onClick={() => UpdateCategory(category.trnro)} className="btn btn-primary mt-2">Tallenna</button></span>
-              <span className="p-2"><button onClick={() => deleteCategory(category.trnro)} className="btn btn-primary mt-2 ">Poista</button></span>
-              <span className="p-2"><button onClick={() => Products(category.trnro)} className="btn btn-primary mt-2 ">Tuotteet</button></span>
+              <span className="p-2"><button type="submit" onClick={() => UpdateCategory(category.trnro)} className="btn shadow-none mt-2">Tallenna</button></span>
+              <span className="p-2"><button onClick={() => deleteCategory(category.trnro)} className="btn shadow-none mt-2 ">Poista</button></span>
+              <span className="p-2"><button onClick={() => Products(category.trnro)} className="btn shadow-none mt-2 ">Tuotteet</button></span>
             </div>
           ))}
 
         </div>
         <div className="col-lg-4 mt-2">
-          <h5>Lisää uusi tuote: </h5>
+          <h3>Lisää uusi tuote: </h3>
           <form action="submit" onSubmit={saveProducts}>
             <label htmlFor="img">Tuotekuva: </label>
             {file != null ? (
@@ -437,23 +441,24 @@ export default function Edit_categories() {
                     ))}
                   </select>
                 </div>
-            <button className="btn btn-primary m-2">Lisää</button>
+            <button className="btn shadow-none m-2">Lisää</button>
 
           </form>
-
-          <ul className="mt-3">
+          <h3>Tuotteet:</h3>            
+          <table className="mt-3">
             {products.map(product => (
-              <li className="">{product.tuotenimi}
-                <button onClick={() => deleteProduct(product.tuotenro)} className="btn btn-primary m-2">Poista</button>
-                <button onClick={() => editProduct(product)} className="btn btn-primary m-2">Muokkaa</button>
-              </li>
+              <tr className="">
+                <td>{product.tuotenimi}</td>
+                <td><button onClick={() => deleteProduct(product.tuotenro)} className="btn shadow-none m-2">Poista</button></td>
+                <td><button onClick={() => editProduct(product)} className="btn shadow-none m-2">Muokkaa</button></td>
+              </tr>
             ))}
-          </ul>
+          </table>
         </div>
         {editedProduct != null ? (
           <>
             <div className="col-lg-4 mt-2">
-              <h5>Muokkaa tuotetta: </h5>
+              <h3>Muokkaa tuotetta: </h3>
               <label htmlFor="tuotenimi">Tuotenimi: </label>
               <input className="form-control" id="tuotenimi" type="text" value={nameUpdated} onChange={e => setNameUpdated(e.target.value)} />
               <label htmlFor="hinta">Hinta: </label>
@@ -470,14 +475,14 @@ export default function Edit_categories() {
                   </select>
                 </div>
 
-              <button onClick={() => updateProduct(editedProduct.tuotenro)} className="btn btn-primary m-1">Tallenna</button>
-              <button onClick={() => setEditedProduct(null)} className="btn btn-primary m-1">Sulje muokkaamatta</button>
-              <button onClick={() => editImage()} className="btn btn-primary m-1">Vaihda kuvaa</button>
+              <button onClick={() => updateProduct(editedProduct.tuotenro)} className="btn shadow-none m-1">Tallenna</button>
+              <button onClick={() => setEditedProduct(null)} className="btn shadow-none m-1">Sulje muokkaamatta</button>
+              <button onClick={() => editImage()} className="btn shadow-none m-1">Vaihda kuvaa</button>
               {editedImage != false ? (
                 <>
                   <input className="form-control" id="img" type="file" onChange={handleChange_2} />
-                  <button onClick={() => setEditedImage(false)} className="btn btn-primary m-1">Sulje muokkaamatta</button>
-                  <button onClick={e => updateImage(editedProduct.tuotenro, e)} className="btn btn-primary m-1">Tallenna kuva</button>
+                  <button onClick={() => setEditedImage(false)} className="btn shadow-none m-1">Sulje muokkaamatta</button>
+                  <button onClick={e => updateImage(editedProduct.tuotenro, e)} className="btn shadow-none m-1">Tallenna kuva</button>
                   {file != null ? (
                     <>
                       <label htmlFor="img">Tuotekuva: </label>
@@ -503,7 +508,7 @@ export default function Edit_categories() {
           <></>
         )
         }
-        <div className="col-lg-4 mt-2">
+        <div className="col-lg-5 mt-2">
           <Get_orders/>
         </div>
       </div>

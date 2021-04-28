@@ -86,7 +86,7 @@ export default function Products ({ trnro, addToCart }) {
                   </div>
                 </div>
               </div>
-
+   
         ))}
         </div>
         </div>
