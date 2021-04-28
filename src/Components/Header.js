@@ -4,17 +4,9 @@ import Dropdown from './Dropdown.js';
 import { Link } from 'react-router-dom';
 
 
-export default function Header({ products, cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart, admin}) {
+export default function Header({cart, addToCart, removeFromCart, trnro, emptyRow, emptyCart, admin}) {
    
-const filterProducts = (productList, query) => {
-    if (!query) {
-        return productList;
-    }
-    return productList.filter((product) => {
-        const productName = product.name;
-        return productName;
-    });
-};
+
 
 let total = 0    
 
