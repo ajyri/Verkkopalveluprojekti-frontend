@@ -1,44 +1,18 @@
-.list-group-item{
-  display: inline-block;
-  border: none;
-  background-color: #cbac88;
+header{
+  background-color: #A37848;
 }
 
-.list-group-horizontal{
-  border: none;
+body{
+  background-color: #e9dccd;
 }
 
-ul{
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
+footer{
+  background-color: #34291D;
 }
 
-.social {
-  height: 45px;
-  width: 45px;
-  margin-top: 15px;
-  display: inline-block;
-}
-
-.footer_info {
-  color: #cbac88;
-}
-
-.subscribe {
-  color: #cbac88;
-  margin: 0 auto;
-  max-width: 500px;
-}
-
-a{
-  color: white;
-  text-decoration: none;
-}
-
-#cart{
-  max-width: 50px;
-  max-height: 50px;
+nav{
+  background-color: #A37848;
+  font-size: larger;
 }
 
 figure{
@@ -50,30 +24,29 @@ figure img{
   border-radius: 10px;
 }
 
-body{
-  background-color: #e9dccd;
+ul{
+  list-style: none;
+  padding: 0px;
+  margin: 0px;
 }
 
-footer{
-  background-color: #34291D;
-
+a{
+  color: white;
+  text-decoration: none;
 }
 
-header{
-  background-color: #A37848;
-}
-
-nav{
-  background-color: #A37848;
-  font-size: larger;
-}
-
-#listing{
+.list-group-item{
+  display: inline-block;
+  border: none;
   background-color: #cbac88;
 }
 
-.nav-link{
-  color: white;
+.list-group-horizontal{
+  border: none;
+}
+
+.nav-link:hover {
+  color: #34291D;
 }
 
 .navbar-toggler-icon {
@@ -81,9 +54,8 @@ nav{
   background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(52, 41, 29,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
-#logo{
-  max-width: 100%;
-  height: auto;
+.footer_info {
+  color: #cbac88;
 }
 
 .btn{
@@ -121,6 +93,79 @@ nav{
 .hidden {
   display: none;
 }
+
+.subscribe {
+  color: #cbac88;
+  margin: 0 auto;
+  max-width: 500px;
+}
+
+.nav-link{
+  color: white;
+}
+
+.navbar-toggler-icon {
+  /* navigaation hampurilaisvalikko, asetetaan sille väri omasta paletista */
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='rgba(52, 41, 29,1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.cart-amount {
+  color: black;
+  font-weight: bold;
+  background-color: #e9dccd;
+  padding-left: 6px;
+  padding-right: 6px;
+  border-radius: 10px;
+  justify-content: center;
+}
+
+.empty{
+  font-size: 13px;
+}
+
+.drop-down-light-brown {
+  background-color: #e9dccd;
+}
+
+.empty{
+  font-size: 13px;
+}
+
+.link{
+  color: black;
+}
+.link:hover{
+  color: white;
+}
+
+.logoutlink {
+  font-size: larger;
+  
+}
+
+.logoutlink {
+  font-size: larger;
+  color:black ;
+}
+
+.logoutlink:hover {
+  color: white;
+  
+}
+#logo{
+  max-width: 100%;
+  height: auto;
+}
+
+#cart{
+  max-width: 50px;
+  max-height: 50px;
+}
+
+#listing{
+  background-color: #cbac88;
+}
+
 /* ===== Scrollbar CSS ===== */
   /* Firefox */
   * {
@@ -175,26 +220,5 @@ nav{
     width: 25em;
   }
   
-.drop-down-light-brown {
-  background-color: #e9dccd;
-}
-.cart-amount {
-  color: black;
-  font-weight: bold;
-  background-color: #e9dccd;
-  padding-left: 6px;
-  padding-right: 6px;
-  border-radius: 10px;
-  justify-content: center;
-}
 
-.empty{
-  font-size: 13px;
-}
 
-.link{
-  color: black;
-}
-.link:hover{
-  color: white;
-}
