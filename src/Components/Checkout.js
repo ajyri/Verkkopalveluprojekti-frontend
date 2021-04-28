@@ -39,7 +39,7 @@ export default function Checkout({ cart, removeFromCart, addToCart }) {
                         </figure>
                         <div className="col-1"></div>
                         <div className="col-3 col-md-3 text-center">
-                            <p>{(item.hinta * 1).toFixed(2)}€</p>
+                            <p>{Number(item.hinta).toFixed(2)}€</p>
                         </div>
                         <div className="col-3 col-md-3 text-center">
                             <p>{(item.hinta * item.qty).toFixed(2)}€</p>
