@@ -38,23 +38,23 @@ let total = 0
                       )  
                       } 
                 
-                <div className="col-lg-3 col-md-7 text-start pt-2 mb-1">
+                <div className="col-lg-2 col-md-7 text-start pt-2 mb-1">
                     <Link to={{ pathname: '/' }}><img id="logo" className="img-fluid" src="/img/axlogo.png" alt="" /></Link>
                 </div>
                                
-                <nav className=" col-lg-3 col-md-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
+                <nav className=" col-lg-4 col-md-6 col-6 m-0 align-self-end navbar navbar-expand-lg">
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <Link className="nav-link active" aria-current="page" to={{ pathname: '/' }} >Etusivu</Link>
+                                <Link className="nav-link active nav-items" id="nav-items" aria-current="page" to={{ pathname: '/' }} >Etusivu</Link>
                             </li>
                             <li className="nav-item dropdown ">
-                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="nav-link dropdown-toggle nav-items mb-1" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Tuoteryhmät
-                                </a>
+                                </div>
                                 <Dropdown trnro={trnro}/>
                             </li>
                         </ul>
@@ -62,7 +62,7 @@ let total = 0
                     </div>
                 </nav>
                 
-                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-1 dropend " onClick={e => e.stopPropagation()}>
+                <div className="col-lg-6 col-md-6 col-6 align-self-md-end text-end pt-2 mb-3 dropend " onClick={e => e.stopPropagation()}>
                     <a type='button' data-bs-target="#cartItems" data-bs-toggle="dropdown">
                         <Cart count={cart} />
                     </a>

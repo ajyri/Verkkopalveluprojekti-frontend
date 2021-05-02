@@ -1,9 +1,13 @@
 header{
   background-color: #A37848;
+  
 }
 
 body{
-  background-color: #e9dccd;
+  background-image: url("/src/img2/beige-aged-background2.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
 }
 
 footer{
@@ -11,7 +15,6 @@ footer{
 }
 
 nav{
-  background-color: #A37848;
   font-size: larger;
 }
 
@@ -23,7 +26,11 @@ figure img{
   border: solid 1px black;
   border-radius: 10px;
 }
-
+h2 {
+  font-weight: bold;
+  font-size: 30px;
+  padding: 10px;
+}
 ul{
   list-style: none;
   padding: 0px;
@@ -38,7 +45,6 @@ a{
 .list-group-item{
   display: inline-block;
   border: none;
-  background-color: #cbac88;
 }
 
 .list-group-horizontal{
@@ -75,7 +81,13 @@ a{
   background-color: #cbac88;
   border: 1px solid black;
   height: 100%;
-  
+  transition: 0.4s;
+  transition: transform 0.3s;
+  margin-top: 8px;
+}
+.card:hover {
+  opacity: 1;
+  transform: scale(1.02);
 }
 .card-img-top {
   width: 100%;
@@ -101,6 +113,9 @@ a{
   color: #cbac88;
   margin: 0 auto;
   max-width: 500px;
+}
+.sub_button:hover {
+  border: 1px solid black;
 }
 
 .nav-link{
@@ -128,6 +143,8 @@ a{
 
 .drop-down-light-brown {
   background-color: #e9dccd;
+  margin-left: 30px;
+  padding: 0;
 }
 
 .empty{
@@ -155,18 +172,69 @@ a{
   color: white;
   
 }
+
+.social {
+  border-radius: 15px;
+  max-width: 52px;
+  max-height: 52px;
+  background-color: #A37848;
+}
+.social:hover {
+
+  background-color: #34291D;
+
+}
+
+.nav-items {
+  position: relative; z-index: 99;
+  font-weight: bold;
+  font-size: 24px;
+  color: #34291D;
+  border: 2px solid #34291D;
+  border-radius: 15px;
+  padding: 6px;
+  margin: 7px;
+  margin-left: 0;
+  background-color: #cbac88;
+  opacity: 0.75;
+  transition: 0.4s;
+  transition: transform .2s;
+}
+
+.nav-items:hover {
+  opacity: 1;
+  transform: scale(1.05);
+}
 #logo{
   max-width: 100%;
   height: auto;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 #cart{
   max-width: 50px;
   max-height: 50px;
+  margin-right: 20px;
 }
 
 #listing{
   background-color: #cbac88;
+  background-color: rgba(210, 180, 140, 0.6);
+  
+  border-radius: 5px;
+}
+
+#info1 {
+  border-right: 1px solid #A37848;
+}
+
+#info2 {
+  border-right: 1px solid #A37848;
+}
+.info2:hover {
+  text-decoration: underline;
+  color: #cbac88;
 }
 
 /* ===== Scrollbar CSS ===== */
@@ -223,5 +291,10 @@ a{
     width: 25em;
   }
   
-
+  @media only screen and (max-width: 991px) {
+    .nav-items {
+    max-width: 200px;
+    text-align: center;
+    }
+  }
 

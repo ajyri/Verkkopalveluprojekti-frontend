@@ -50,7 +50,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="col-12">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary sub_button">
             Tilaa uutiskirje
           </button>
         </div>
@@ -59,7 +59,7 @@ export default function Footer() {
         </div>
       <div className="container p-4">
       <div className="row">
-        <div className="col-lg-6 col-md-12 text-lg-start text-center">
+        <div className="col-lg-4 col-md-12 text-center" id="info1">
           <h5 className="footer_info text-uppercase">Kahvila ÄX</h5>
 
           <p className="footer_info">
@@ -67,28 +67,28 @@ export default function Footer() {
           </p>
         </div>
    
-        <div className="col-lg-3 col-md-12 text-lg-start text-center">
+        <div className="col-lg-4 col-md-12 text-center" id="info2">
           <h5 className="text-uppercase footer_info">Ota yhteyttä</h5>
 
           <ul className="list-unstyled mb-0">
             <li>
-              <a href="#!" class="footer_info">+358 40 420 6969</a>
+              <a href="#!" class="footer_info info2">+358 40-421-6361</a>
             </li>
             <li>
-              <a href="#!" class="footer_info">Jokukatu 5X</a>
+              <a href="#!" class="footer_info info2">Jokukatu 5X</a>
             </li>
             <li>
-              <a href="#!" class="footer_info">kahvilaäx@äx.fi</a>
+              <a href="#!" class="footer_info info2">kahvilaäx@äx.fi</a>
             </li>
           </ul>
         </div>
       
-        <div className="col-lg-3 col-md-12 text-lg-start text-center">
+        <div className="col-lg-4 col-md-12 text-center">
           <h5 className="text-uppercase footer_info">Sosiaalinen media</h5>
-              <a href="#!" className="ms-4"><img className="social" src="/img/facebook.png" alt=""/></a>
-              <a href="#!" className="ms-4"><img className="social" src="/img/instagram.png" alt=""/></a>
-              <a href="#!" className="ms-4"><img className="social" src="/img/youtube.png" alt=""/></a>
-              <a href="#!" className="ms-4"><img className="social" src="/img/twitter.png" alt=""/></a>
+              <a href="#!" className="ms-3"><img className="social" src="/img/facebook.png" alt=""/></a>
+              <a href="#!" className="ms-3"><img className="social" src="/img/instagram.png" alt=""/></a>
+              <a href="#!" className="ms-3"><img className="social" src="/img/youtube.png" alt=""/></a>
+              <a href="#!" className="ms-3"><img className="social" src="/img/twitter.png" alt=""/></a>
         </div>
       </div>
       </div>

@@ -55,7 +55,7 @@ export default function Products ({ trnro, addToCart }) {
     <>
       <div
         id='listing'
-        className='row border-bottom border-dark pb-2'
+        className='row border-dark pb-2'
       >
         <h2>{category.map(category => category.trnimi)}</h2>
         <div className="container-fluid">
