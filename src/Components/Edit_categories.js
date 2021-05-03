@@ -390,7 +390,7 @@ export default function Edit_categories() {
 
   return (
     <>
-      <div className="row border-bottom border-start border-end border-dark pb-2" id="listing">
+      <div className="row pb-2" id="listing">
         <div className="col-lg-4">
           <div className="col-auto mt-2">
             <h3 className="mt-2">Lisää uusi tuoteryhmä</h3>
