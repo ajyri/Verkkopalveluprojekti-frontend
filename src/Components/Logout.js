@@ -27,7 +27,7 @@ export default function Logout({setAdmin, URL}) {
                 <div>
                     <h2 className="mt-2">Olet kirjautunut ulos</h2>
                 </div>
-                <div className="ms-2">
+                <div className="ms-5 mb-3">
                     <Link className="logoutlink" to='/'>Siirry takaisin etusivulle</Link>
                 </div>
             </div>
